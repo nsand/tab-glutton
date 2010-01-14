@@ -3,7 +3,7 @@
 "version": "0.1",
 "permissions": ["tabs"],
 "description": "Tab Glutton helps you manage and navigate the growing number of tabs in your browser.",
-"icons": { "32": "tab_glutton_32.png", "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
+"icons": { "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
 "background_page": "background.html",
 "browser_action": {
 	"default_title": "Tab Glutton",
