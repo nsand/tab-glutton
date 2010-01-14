@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#content {
+	width: 330px;
+	height: 475px;
+	font-family: Helvetica, Arial, sans-serif;
+	padding-right: 10px;
+
+	background-color: #ebeff9;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border: 1px solid #efefef; 
+}
+
+#content ul {
+	margin-top: 0;
+	margin-right: 5px;
+	padding-left: 5px;
+	width: 295px;
+}
+#content ul li {
+	margin: 2px;
+	padding: 0 2px;
+	width: 100%;
+	background-color: #f4f6fc;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px; 
+	border: 2px solid #b5c7de;
+	list-style: none;
+}
+#content ul li:hover {
+	cursor: pointer;
+}
+#search {
+	padding: 0 3px;
+}
+#field {
+	width: 100%;
+	margin: 5px 0 2px 0;
+	border: 1px solid #b5c7de;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px; 
+}
+div.label {
+	font-size: 90%;
+	color: #000000;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 20px;
+}
+div.label > .favicon {
+	height: 16px;
+	width: 16px;
+	border: 0 none;
+	padding: 2px;
+	float: left;
+}
+p.description {
+	font-size: 75%;
+	color: #8f8f8f;
+	margin-top: 2px;
+	padding-left: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.scrollable {
+	overflow: auto;
+	height: 425px;
+	padding: 0 5px 0 0;
+}
+</style>
+
+<script>
+// Delay filtering for typing speed
+var TYPING_DELAY = 350;
+var typing = null;
+
+function load() {
+	chrome.tabs.getAllInWindow(null, function(tabs) {
+		var content = document.getElementById("content");
+		var list = document.getElementById("list");
+		var i = 0;
+
+		for (; i < tabs.length ; i++) {
+			var li = document.createElement("li");
+			li.appendChild(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
+			li.appendChild(createDescription(tabs[i].url));
+			li.tabId = tabs[i].id;
+			li.onclick = function() { chrome.tabs.update(this.tabId, { selected : true });};
+			list.appendChild(li);
+		}
+		document.getElementById("field").onkeyup = function() {
+			if (typing == null) {
+				typing = setTimeout(refresh, TYPING_DELAY);
+			}
+			else {
+				clearTimeout(typing);
+				typing = setTimeout(refresh, TYPING_DELAY);
+			}
+		};
+	});
+	document.getElementById("field").focus();
+}
+
+/* Refresh the tab list after the delay */
+function refresh() {
+	typing = null;
+	var list = document.getElementById("list");
+	var item = list.firstChild;
+	var field = document.getElementById("field");
+	var exp = null;
+	if (field.value != null && field.value.replace(/^\s*/,"").length > 0)
+		exp = field.value;
+	var re = exp != null ? new RegExp(exp, "i") : null;
+	while (item != null) {
+		if (re != null && !re.test(item.firstChild.url) && !re.test(item.firstChild.innerHTML)) {
+			item.style.display = "none";
+		}
+		else {
+			item.style.display = "block";
+		}
+		item = item.nextSibling;
+	}
+}
+/* TODO Will need to escape the string for regular expressions */
+function escapeString(str) {
+}
+
+function createLink(icon, title, url) {
+	var d = document.createElement("div");
+	if (icon != null) {
+		var i = document.createElement("img");
+		i.setAttribute("class", "favicon");
+		i.setAttribute("src", icon);
+		d.appendChild(i);
+	}
+	d.appendChild(document.createTextNode(title));
+	d.setAttribute("class", "label");
+	d.url = url;
+	return d;
+}
+
+function createDescription(desc) {
+	var p = document.createElement("p");
+	p.setAttribute("class", "description");
+	p.innerHTML = desc;
+	return p;
+}
+
+</script>
+<body onload="load()">
+<div id="content">
+<div id="search">
+<input id="field">
+</div>
+<div class="scrollable" >
+<ul id="list"></ul>
+</div>
+</div>
+</body>
+</html>

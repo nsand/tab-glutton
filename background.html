@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function init() {
+	var count = 0;
+	// set up the initial tab count
+	chrome.tabs.getAllInWindow(null,function(tabs) {
+		count = tabs.length;
+		chrome.browserAction.setBadgeText({text: "" + count});
+	});
+
+	// listen for new tabs
+	chrome.tabs.onCreated.addListener(function(tab) {
+		chrome.browserAction.setBadgeText({text: "" + (++count)});
+	});
+
+	// listen for closed tabs
+	chrome.tabs.onRemoved.addListener(function(tab) {
+		chrome.browserAction.setBadgeText({text: "" + (--count)});
+	});
+
+	/*var lastTabId = 0;
+	var id = 0;
+	chrome.tabs.getSelected(null, function(tab) {
+		lastTabId = id = tab.id;
+	});
+
+	chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo) {
+		lastTabId = id;
+		id = tabId;
+	});
+    */
+	// set up onclick for the browser action
+	// TODO user preference for onclick action
+	/*chrome.browserAction.onClicked.addListener(function(tab) {
+		if (tab.id != lastTabId) {
+			chrome.tabs.update(lastTabId, { selected : true });
+			lastTabId = tab.id;
+		}
+	});*/
+}
+</script>
+</head>
+<body onload="init()">
+</body>
+</html>
