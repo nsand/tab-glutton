@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+<script type="text/javascript" src="lib/tg.js"></script>
 <script>
 // Delay filtering for typing speed
 var TYPING_DELAY = 350;
@@ -18,20 +19,28 @@ function load() {
 
 		for (; i < tabs.length ; i++) {
 			var li = document.createElement("li");
+			li.appendChild(createActions());
 			li.appendChild(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
 			li.appendChild(createDescription(tabs[i].url));
+		
 			li.tabId = tabs[i].id;
 			if (tabs[i].selected) {
 				current = li;
-				li.setAttribute("class", "current");
+				tg.addClass(current, "current");
 			}
 
 			li.onclick = function() {
 				chrome.tabs.update(this.tabId, { selected : true });
-				current.setAttribute("class", "");
+				tg.removeClass(current, "current");
 				current = this;
-				current.setAttribute("class", "current");
+				tg.addClass(current, "current");
 			};
+			li.onmouseover = function() {
+				showActions(this);
+			};
+			li.onmouseout = function() {
+				hideActions(this);
+			}
 			list.appendChild(li);
 		}
 		document.getElementById("field").onkeyup = function() {
@@ -47,7 +56,12 @@ function load() {
 
 	document.getElementById("field").focus();
 }
-
+function showActions(tab) {
+	tg.addClass(tab, "hover");
+}
+function hideActions(tab) {
+	tg.removeClass(tab, "hover");
+}
 /* Refresh the tab list after the delay */
 function refresh() {
 	typing = null;
@@ -80,6 +94,7 @@ function createLink(icon, title, url) {
 		i.setAttribute("src", icon);
 		d.appendChild(i);
 	}
+
 	d.appendChild(document.createTextNode(title));
 	d.setAttribute("class", "label");
 	d.url = url;
@@ -91,6 +106,21 @@ function createDescription(desc) {
 	p.setAttribute("class", "description");
 	p.innerHTML = desc;
 	return p;
+}
+
+/*
+Create actions for tab items
+*/
+function createActions() {
+	var actionContainer = document.createElement("ul");
+	actionContainer.setAttribute("class", "actions");
+	var action = document.createElement("li");
+	var actionTag = document.createElement("div");
+	actionTag.setAttribute("class", "close");
+	action.appendChild(actionTag);
+	actionContainer.appendChild(action);
+	return actionContainer;
+	
 }
 
 </script>

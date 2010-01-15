@@ -26,14 +26,22 @@
 	-webkit-border-bottom-right-radius: 3px; 
 }
 
+li {
+	list-style: none;
+}
 /* Tab list */
-#content ul {
+.scrollable {
+	overflow: auto;
+	height: 425px;
+	padding: 0 5px 0 0;
+}
+#content #list {
 	margin-top: 0;
 	margin-right: 5px;
 	padding-left: 5px;
 	width: 295px;
 }
-#content ul li {
+#content #list > li {
 	margin: 2px;
 	padding: 0 2px;
 	width: 100%;
@@ -43,12 +51,11 @@
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px; 
 	border: 2px solid #b5c7de;
-	list-style: none;
 }
-#content ul li.current {
+#content #list > li.current {
 	border: 2px solid #fa0;
 }
-#content ul li:hover {
+#content #list > li:hover {
 	cursor: pointer;
 }
 div.label {
@@ -69,13 +76,31 @@ div.label > .favicon {
 p.description {
 	font-size: 75%;
 	color: #8f8f8f;
-	margin-top: 2px;
+	margin: 2px 0;
 	padding-left: 5px;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.scrollable {
-	overflow: auto;
-	height: 425px;
-	padding: 0 5px 0 0;
+/* Actions */
+.actions {
+	float: right;
+	display: none;
+	padding: 0;
+	margin: 0;
+}
+li.hover .actions {
+	display: inline-block;
+}
+.close {
+	background-image: url("../img/close.png");
+	background-repeat:  no-repeat;
+	background-color: #f4f6fc;
+	background-position: center;
+	z-index: 999999;
+	padding: 3px;
+	width: 12px;
+	height: 12px;
+}
+.close:hover {
+	background-image: url("../img/close_hover.png");
 }
