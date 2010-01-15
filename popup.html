@@ -34,6 +34,9 @@
 	border: 2px solid #b5c7de;
 	list-style: none;
 }
+#content ul li.current {
+	border: 2px solid #fa0;
+}
 #content ul li:hover {
 	cursor: pointer;
 }
@@ -82,7 +85,10 @@ p.description {
 <script>
 // Delay filtering for typing speed
 var TYPING_DELAY = 350;
+// Typing timeout reference
 var typing = null;
+// Keep track of the current tab item
+var current = null;
 
 function load() {
 	chrome.tabs.getAllInWindow(null, function(tabs) {
@@ -95,7 +101,17 @@ function load() {
 			li.appendChild(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
 			li.appendChild(createDescription(tabs[i].url));
 			li.tabId = tabs[i].id;
-			li.onclick = function() { chrome.tabs.update(this.tabId, { selected : true });};
+			if (tabs[i].selected) {
+				current = li;
+				li.setAttribute("class", "current");
+			}
+
+			li.onclick = function() {
+				chrome.tabs.update(this.tabId, { selected : true });
+				current.setAttribute("class", "");
+				current = this;
+				current.setAttribute("class", "current");
+			};
 			list.appendChild(li);
 		}
 		document.getElementById("field").onkeyup = function() {
@@ -108,6 +124,7 @@ function load() {
 			}
 		};
 	});
+
 	document.getElementById("field").focus();
 }
 
