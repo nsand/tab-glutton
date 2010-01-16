@@ -57,6 +57,7 @@ li {
 }
 #content #list > li:hover {
 	cursor: pointer;
+	background-color: #e4e7f0;
 }
 div.label {
 	font-size: 90%;
@@ -94,7 +95,7 @@ li.hover .actions {
 .close {
 	background-image: url("../img/close.png");
 	background-repeat:  no-repeat;
-	background-color: #f4f6fc;
+	background-color: #e4e7f0;
 	background-position: center;
 	z-index: 999999;
 	padding: 3px;
