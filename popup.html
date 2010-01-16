@@ -65,21 +65,20 @@ function hideActions(tab) {
 /* Refresh the tab list after the delay */
 function refresh() {
 	typing = null;
-	var list = document.getElementById("list");
-	var item = list.firstChild;
 	var field = document.getElementById("field");
 	var exp = null;
 	if (field.value != null && field.value.replace(/^\s*/,"").length > 0)
 		exp = field.value;
 	var re = exp != null ? new RegExp(exp, "i") : null;
-	while (item != null) {
-		if (re != null && !re.test(item.firstChild.url) && !re.test(item.firstChild.innerHTML)) {
-			item.style.display = "none";
+
+	var items = document.querySelectorAll("#list > li > .label")
+	for (var i = 0; i < items.length; i++) {
+		if (re != null && !re.test(items[i].url) && !re.test(items[i].getElementsByTagName("span")[0].innerHTML)) {
+			items[i].parentNode.style.display = "none";
 		}
 		else {
-			item.style.display = "block";
+			items[i].parentNode.style.display = "block";
 		}
-		item = item.nextSibling;
 	}
 }
 /* TODO Will need to escape the string for regular expressions */
@@ -94,8 +93,9 @@ function createLink(icon, title, url) {
 		i.setAttribute("src", icon);
 		d.appendChild(i);
 	}
-
-	d.appendChild(document.createTextNode(title));
+	var span = document.createElement("span");
+	span.appendChild(document.createTextNode(title));
+	d.appendChild(span);
 	d.setAttribute("class", "label");
 	d.url = url;
 	return d;
