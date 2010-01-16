@@ -1,3 +1,10 @@
+0.2 [2010-01-16]
+
+- Tabs can be closed from the popup UI [#2]
+- Current tab highlighting [#1]
+- Mouseover indication for items in the popup UI [#4]
+- Content of the favicon should no longer match filter text [#5]
+
 0.1 [2010-01-14]
 
 - Filter open tabs based on a search string
