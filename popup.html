@@ -19,11 +19,11 @@ function load() {
 
 		for (; i < tabs.length ; i++) {
 			var li = document.createElement("li");
-			li.appendChild(createActions());
+			li.tabId = tabs[i].id;
+			li.appendChild(createActions(li));
 			li.appendChild(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
 			li.appendChild(createDescription(tabs[i].url));
-		
-			li.tabId = tabs[i].id;
+
 			if (tabs[i].selected) {
 				current = li;
 				tg.addClass(current, "current");
@@ -109,15 +109,23 @@ function createDescription(desc) {
 }
 
 /*
-Create actions for tab items
+Create actions for tab items. [item] is the item in the tab list
+to create the action for.
 */
-function createActions() {
+function createActions(item) {
 	var actionContainer = document.createElement("ul");
 	actionContainer.setAttribute("class", "actions");
 	var action = document.createElement("li");
 	var actionTag = document.createElement("div");
 	actionTag.setAttribute("class", "close");
 	action.appendChild(actionTag);
+	/* Add close action */
+	actionTag.onclick = function(e) {
+		chrome.tabs.remove(item.tabId, function() {
+			item.parentNode.removeChild(item);
+		});
+		e.stopPropagation();
+	};
 	actionContainer.appendChild(action);
 	return actionContainer;
 	
