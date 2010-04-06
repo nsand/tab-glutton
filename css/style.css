@@ -1,3 +1,6 @@
+body {
+	margin: 0;
+}
 #content {
 	width: 330px;
 	height: 475px;
@@ -75,7 +78,7 @@ div.label > .favicon {
 	float: left;
 }
 p.description {
-	font-size: 75%;
+	font-size: 65%;
 	color: #8f8f8f;
 	margin: 2px 0;
 	padding-left: 5px;
