@@ -29,6 +29,10 @@ body {
 	-webkit-border-bottom-right-radius: 3px; 
 }
 
+#field:focus {
+	outline: #55aade solid 2px;
+}
+
 li {
 	list-style: none;
 }
