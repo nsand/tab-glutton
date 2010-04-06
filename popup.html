@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/tg.js"></script>
 <script>
 // Delay filtering for typing speed
@@ -13,35 +14,29 @@ var current = null;
 
 function load() {
 	chrome.tabs.getAllInWindow(null, function(tabs) {
-		var content = document.getElementById("content");
-		var list = document.getElementById("list");
+		var list = $("#list");
 		var i = 0;
 
 		for (; i < tabs.length ; i++) {
-			var li = document.createElement("li");
-			li.tabId = tabs[i].id;
-			li.appendChild(createActions(li));
-			li.appendChild(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
-			li.appendChild(createDescription(tabs[i].url));
+			var li = $("<li>");
+			$.data(li[0], "tabId", tabs[i].id);
+			li.append(createActions(li));
+			li.append(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
+			li.append(createDescription(tabs[i].url));
 
 			if (tabs[i].selected) {
 				current = li;
-				tg.addClass(current, "current");
+				current.addClass("current");
 			}
 
-			li.onclick = function() {
-				chrome.tabs.update(this.tabId, { selected : true });
-				tg.removeClass(current, "current");
-				current = this;
-				tg.addClass(current, "current");
-			};
-			li.onmouseover = function() {
-				showActions(this);
-			};
-			li.onmouseout = function() {
-				hideActions(this);
-			}
-			list.appendChild(li);
+			li.click(function(e) {
+				chrome.tabs.update($.data(this, "tabId"), { selected : true });
+				current.removeClass("current");
+				current = $(this).addClass("current");
+			});
+			li.hover(function() { showActions(this)}, function() { hideActions(this)});
+			
+			list.append(li);
 		}
 		document.getElementById("field").onkeyup = function() {
 			if (typing == null) {
@@ -57,55 +52,45 @@ function load() {
 	document.getElementById("field").focus();
 }
 function showActions(tab) {
-	tg.addClass(tab, "hover");
+	$(tab).toggleClass("hover");
 }
 function hideActions(tab) {
-	tg.removeClass(tab, "hover");
+	$(tab).toggleClass("hover");
 }
 /* Refresh the tab list after the delay */
 function refresh() {
 	typing = null;
-	var field = document.getElementById("field");
+	var value = $("#field").val();
 	var exp = null;
-	if (field.value != null && field.value.replace(/^\s*/,"").length > 0)
-		exp = field.value;
+	if (value != null && value.replace(/^\s*/,"").length > 0)
+		exp = value;
 	var re = exp != null ? new RegExp(exp, "i") : null;
 
-	var items = document.querySelectorAll("#list > li > .label")
-	for (var i = 0; i < items.length; i++) {
-		if (re != null && !re.test(items[i].url) && !re.test(items[i].getElementsByTagName("span")[0].innerHTML)) {
-			items[i].parentNode.style.display = "none";
+	$("#list > li > .label").each(function(idx) {
+		if (re != null && !re.test($.data(this, "url")) && !re.test($(this).find("span").text())) {
+			$(this).parent().hide();
 		}
 		else {
-			items[i].parentNode.style.display = "block";
+			$(this).parent().show();
 		}
-	}
+	});
 }
 /* TODO Will need to escape the string for regular expressions */
 function escapeString(str) {
 }
 
 function createLink(icon, title, url) {
-	var d = document.createElement("div");
+	var d = $("<div>").addClass("label");
 	if (icon != null) {
-		var i = document.createElement("img");
-		i.setAttribute("class", "favicon");
-		i.setAttribute("src", icon);
-		d.appendChild(i);
+		$("<img>").appendTo(d).addClass("favicon").attr("src", icon);
 	}
-	var span = document.createElement("span");
-	span.appendChild(document.createTextNode(title));
-	d.appendChild(span);
-	d.setAttribute("class", "label");
-	d.url = url;
+	$("<span>").text(title).appendTo(d);
+	$.data(d[0], "url", url);
 	return d;
 }
 
 function createDescription(desc) {
-	var p = document.createElement("p");
-	p.setAttribute("class", "description");
-	p.innerHTML = desc;
-	return p;
+	return $("<p>").attr("class", "description").text(desc);
 }
 
 /*
@@ -113,22 +98,15 @@ Create actions for tab items. [item] is the item in the tab list
 to create the action for.
 */
 function createActions(item) {
-	var actionContainer = document.createElement("ul");
-	actionContainer.setAttribute("class", "actions");
-	var action = document.createElement("li");
-	var actionTag = document.createElement("div");
-	actionTag.setAttribute("class", "close");
-	action.appendChild(actionTag);
-	/* Add close action */
-	actionTag.onclick = function(e) {
-		chrome.tabs.remove(item.tabId, function() {
-			item.parentNode.removeChild(item);
+	var actionContainer = $("<ul>").addClass("actions");
+	var action = $("<div>").appendTo("<li>").addClass("close").click(function(e) {
+		chrome.tabs.remove($.data(item[0], "tabId"), function() {
+			item.remove();
 		});
 		e.stopPropagation();
-	};
-	actionContainer.appendChild(action);
+	});
+	action.parent().appendTo(actionContainer);
 	return actionContainer;
-	
 }
 
 </script>
