@@ -88,6 +88,11 @@ p.description {
 	padding-left: 5px;
 	white-space: nowrap;
 	overflow: hidden;
+	display: none;
+}
+
+.hover p.description {
+	display: block;
 }
 /* Actions */
 .actions {
