@@ -1,12 +1,10 @@
 body {
-	margin: 0;
+	margin-top: 0;
+	overflow-x: hidden;
 }
 #content {
-	width: 330px;
-	height: 475px;
+	width: 335px;
 	font-family: Helvetica, Arial, sans-serif;
-	padding-right: 10px;
-
 	background-color: #ebeff9;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -17,11 +15,16 @@ body {
 
 /* Filtering */
 #search {
-	padding: 0 3px;
+	background-color: #ebeff9;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	width: 325px;
+	padding: 2px;
+	position: fixed;
+	top: -1px;
 }
 #field {
-	width: 100%;
-	margin: 5px 0 2px 0;
+	width: 318px;
 	border: 1px solid #b5c7de;
 	-webkit-border-top-left-radius: 3px;
 	-webkit-border-top-right-radius: 3px;
@@ -38,20 +41,16 @@ li {
 }
 /* Tab list */
 .scrollable {
-	overflow: auto;
-	height: 425px;
-	padding: 0 5px 0 0;
+	width: 325px;
+	margin-top: 25px;
 }
 #content #list {
-	margin-top: 0;
-	margin-right: 5px;
-	padding-left: 5px;
-	width: 295px;
+	margin: 0;
+	padding: 0;
 }
 #content #list > li {
 	margin: 2px;
 	padding: 0 2px;
-	width: 100%;
 	background-color: #f4f6fc;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
