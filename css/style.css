@@ -1,6 +1,7 @@
 body {
-	margin-top: 0;
-	overflow-x: hidden;
+	width: 340px;
+	margin: 0;
+	overflow-x:hidden;
 }
 #content {
 	width: 335px;
@@ -16,12 +17,8 @@ body {
 /* Filtering */
 #search {
 	background-color: #ebeff9;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
 	width: 325px;
 	padding: 2px;
-	position: fixed;
-	top: -1px;
 }
 #field {
 	width: 318px;
@@ -42,11 +39,11 @@ li {
 /* Tab list */
 .scrollable {
 	width: 325px;
-	margin-top: 25px;
 }
 #content #list {
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
 }
 #content #list > li {
 	margin: 2px;

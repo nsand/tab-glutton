@@ -47,6 +47,9 @@ function load() {
 				typing = setTimeout(refresh, TYPING_DELAY);
 			}
 		};
+		if ($(document).height() > 550) {
+			$("#list").height(500);
+		}
 	});
 
 	document.getElementById("field").focus();
