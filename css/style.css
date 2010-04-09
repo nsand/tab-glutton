@@ -17,20 +17,21 @@ body {
 /* Filtering */
 #search {
 	background-color: #ebeff9;
-	width: 325px;
+	/*width: 325px;*/
 	padding: 2px;
 }
 #field {
-	width: 318px;
+	width: 99%;
 	border: 1px solid #b5c7de;
 	-webkit-border-top-left-radius: 3px;
 	-webkit-border-top-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	-webkit-border-bottom-right-radius: 3px; 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #cfcfcf), color-stop(.65, #fff));/*from(#b5c7de), to(#fff));*/
 }
 
 #field:focus {
-	outline: #55aade solid 2px;
+	outline: none;
 }
 
 li {
@@ -38,7 +39,7 @@ li {
 }
 /* Tab list */
 .scrollable {
-	width: 325px;
+	/*width: 325px;*/
 }
 #content #list {
 	margin: 0;
@@ -63,12 +64,14 @@ li {
 	background-color: #e4e7f0;
 }
 div.label {
-	font-size: 90%;
+	font-size: 80%;
 	color: #000000;
-	font-weight: bold;
 	white-space: nowrap;
 	overflow: hidden;
 	line-height: 20px;
+}
+.current div.label {
+	font-weight: bold;
 }
 div.label > .favicon {
 	height: 16px;
@@ -80,7 +83,7 @@ div.label > .favicon {
 p.description {
 	font-size: 65%;
 	color: #8f8f8f;
-	margin: 2px 0;
+	margin: 0;
 	padding-left: 5px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -88,7 +91,7 @@ p.description {
 }
 
 .hover p.description {
-	display: block;
+	/*display: block;*/
 }
 /* Actions */
 .actions {
