@@ -87,7 +87,7 @@ function createLink(icon, title, url) {
 	if (icon != null) {
 		$("<img>").appendTo(d).addClass("favicon").attr("src", icon);
 	}
-	$("<span>").text(title).appendTo(d);
+	$("<span>").text(title).attr("title", title).appendTo(d);
 	$.data(d[0], "url", url);
 	return d;
 }
