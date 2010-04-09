@@ -27,7 +27,7 @@ body {
 	-webkit-border-top-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	-webkit-border-bottom-right-radius: 3px; 
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #cfcfcf), color-stop(.65, #fff));/*from(#b5c7de), to(#fff));*/
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #efefef), color-stop(.50, #fff));
 }
 
 #field:focus {
