@@ -58,7 +58,7 @@ li {
 	border: 2px solid #b5c7de;
 }
 #content #list > li.current {
-	border: 2px solid #004080;
+	border: 3px solid #004080;
 }
 #content #list > li:hover {
 	cursor: pointer;
