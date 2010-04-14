@@ -51,7 +51,6 @@ function load() {
 			}
 		};
 	});
-
 	document.getElementById("field").focus();
 }
 function showActions(tab, details) {
@@ -88,10 +87,8 @@ function escapeString(str) {
 
 function createLink(icon, title, url) {
 	var d = $("<div>").addClass("label");
-	if (icon != null) {
-		$("<img>").appendTo(d).addClass("favicon").attr("src", icon);
-	}
-	$("<span>").text(title).attr("title", title).appendTo(d);
+	$("<img>").appendTo(d).addClass("favicon").attr("src", icon || (url == "chrome://newtab/" ? "img/chromium_logo.png" : "img/defaultIcon.png"));
+	$("<span>").text(title || url).attr("title", title || url).appendTo(d);
 	$.data(d[0], "url", url);
 	return d;
 }
@@ -115,7 +112,6 @@ function createActions(item) {
 	action.parent().appendTo(actionContainer);
 	return actionContainer;
 }
-
 </script>
 <body onload="load()">
 <div id="content">
