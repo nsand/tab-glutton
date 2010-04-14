@@ -34,7 +34,10 @@ function load() {
 				current.removeClass("current");
 				current = $(this).addClass("current");
 			});
-			li.hover(function() { showActions(this)}, function() { hideActions(this)});
+
+			//if (localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true")
+			var details = localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true";
+				li.hover(function() { showActions(this, details)}, function() { hideActions(this, details)});
 			
 			list.append(li);
 		}
@@ -51,11 +54,15 @@ function load() {
 
 	document.getElementById("field").focus();
 }
-function showActions(tab) {
+function showActions(tab, details) {
 	$(tab).toggleClass("hover");
+	if (details)
+		$(tab).find(".description").show();
 }
-function hideActions(tab) {
+function hideActions(tab, details) {
 	$(tab).toggleClass("hover");
+	if (details)
+		$(tab).find(".description").hide();
 }
 /* Refresh the tab list after the delay */
 function refresh() {
@@ -90,7 +97,7 @@ function createLink(icon, title, url) {
 }
 
 function createDescription(desc) {
-	return $("<p>").attr("class", "description").text(desc);
+	return $("<p>").addClass("description" + ((localStorage["showURL"] == "true" && localStorage["hoverURL"] != "true") ? " detail" : "")).text(desc);
 }
 
 /*

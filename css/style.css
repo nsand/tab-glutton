@@ -17,7 +17,6 @@ body {
 /* Filtering */
 #search {
 	background-color: #ebeff9;
-	/*width: 325px;*/
 	padding: 2px;
 }
 #field {
@@ -37,10 +36,7 @@ body {
 li {
 	list-style: none;
 }
-/* Tab list */
-.scrollable {
-	/*width: 325px;*/
-}
+
 #content #list {
 	margin: 0;
 	padding: 0;
@@ -91,9 +87,10 @@ p.description {
 	display: none;
 }
 
-.hover p.description {
-	/*display: block;*/
+p.description.detail {
+	display: block;
 }
+
 /* Actions */
 .actions {
 	float: right;
