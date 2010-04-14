@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		ul {
+			list-style-type: none;
+		}
+		.disabled {
+			color: #cfcfcf;
+		}
+	</style>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var show = localStorage["showURL"];
+			var hover = localStorage["hoverURL"];
+
+			if (show == "true") {
+				$("#showURL").attr("checked", "checked");
+			}
+			else {
+				$("#hoverURL").attr("disabled", "disabled").next().addClass("disabled");
+			}
+			if (hover == "true") {
+				$("#hoverURL").attr("checked", "checked");
+			}
+
+			$("#showURL").change(function() {
+				var checked = $(this).is(":checked");
+				toggleOption($("#hoverURL"), checked);
+				localStorage["showURL"] = checked;
+			});
+
+			$("#hoverURL").change(function() {
+				localStorage["hoverURL"] = $(this).is(":checked");
+			});
+
+		});
+		function toggleOption(option, enabled) {
+			if (enabled) {
+				option.removeAttr("disabled").next().removeClass("disabled");
+			}
+			else {
+				option.attr("disabled", "disabled").next().addClass("disabled");
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>
+			<input type="checkbox" id="showURL"><label for="showURL">Show tab URL</label>
+			<ul>
+				<li><input type="checkbox" id="hoverURL"><label for="hoverURL">On hover</label></li>
+			</ul>
+		</li>
+	</ul>
+</body>	
+</html>
