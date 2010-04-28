@@ -56,12 +56,12 @@ function load() {
 function showActions(tab, details) {
 	$(tab).toggleClass("hover");
 	if (details)
-		$(tab).find(".description").show();
+		$(tab).find(".description").css("display", "block");
 }
 function hideActions(tab, details) {
 	$(tab).toggleClass("hover");
 	if (details)
-		$(tab).find(".description").hide();
+		$(tab).find(".description").css("display", "none");
 }
 /* Refresh the tab list after the delay */
 function refresh() {
@@ -94,7 +94,7 @@ function createLink(icon, title, url) {
 }
 
 function createDescription(desc) {
-	return $("<p>").addClass("description" + ((localStorage["showURL"] == "true" && localStorage["hoverURL"] != "true") ? " detail" : "")).text(desc);
+	return $("<span>").addClass("description" + ((localStorage["showURL"] == "true" && localStorage["hoverURL"] != "true") ? " detail" : "")).text(desc);
 }
 
 /*
