@@ -5,8 +5,10 @@
 function init() {
 	var count = 0;
 	// set up the initial tab count
-	chrome.tabs.getAllInWindow(null,function(tabs) {
-		count = tabs.length;
+	chrome.windows.getAll({"populate": true},function(windows) {
+		for( var i in windows ) {
+			count += windows[i].tabs.length;
+		}
 		chrome.browserAction.setBadgeText({text: "" + count});
 	});
 
