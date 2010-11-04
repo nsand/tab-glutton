@@ -1,6 +1,6 @@
 {
 "name": "Tab Glutton",
-"version": "0.3.3",
+"version": "0.3.4",
 "permissions": ["tabs"],
 "description": "Tab Glutton helps you manage and navigate the growing number of tabs in your browser.",
 "icons": { "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
@@ -10,5 +10,10 @@
 	"default_title": "Tab Glutton",
 	"default_icon": "tab_glutton_19.png",
 	"popup": "popup.html"
-}
+},
+"content_scripts": [{
+	"matches": ["http://*/*"],
+	"css": ["css/style.css", "css/sidebar.css"],
+	"js": ["lib/jquery.js", "lib/tg.js", "lib/tabglutton.js", "lib/tabglutton_sidebar.js" ]
+	}]
 }
