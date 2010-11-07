@@ -4,7 +4,7 @@
 	overflow-x:hidden;
 }
 
-.tabglutton #content {
+.tabglutton .tg_content {
 	width: 335px;
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: #ebeff9;
@@ -38,13 +38,13 @@
 	list-style: none;
 }
 
-.tabglutton #content #list {
+.tabglutton .tg_tab_list {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 	max-height: 500px;
 }
-.tabglutton #content #list > li {
+.tabglutton .tg_tab_list > li {
 	margin: 2px;
 	padding: 0 2px;
 	background-color: #f4f6fc;
@@ -54,10 +54,10 @@
 	-webkit-border-bottom-right-radius: 5px; 
 	border: 2px solid #b5c7de;
 }
-.tabglutton #content #list > li.current {
+.tabglutton .tg_tab_list > li.current {
 	border: 3px solid #004080;
 }
-.tabglutton #content #list > li:hover {
+.tabglutton .tg_tab_list > li:hover {
 	cursor: pointer;
 	background-color: #e4e7f0;
 }
