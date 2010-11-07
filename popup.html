@@ -13,46 +13,75 @@ var typing = null;
 var current = null;
 
 function load() {
-	chrome.tabs.getAllInWindow(null, function(tabs) {
-		var list = $("#list");
-		var i = 0;
+	var _windId = chrome.windows.WINDOW_ID_NONE;
 
-		for (; i < tabs.length ; i++) {
-			var li = $("<li>");
-			$.data(li[0], "tabId", tabs[i].id);
-			li.append(createActions(li));
-			li.append(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
-			li.append(createDescription(tabs[i].url));
-
-			if (tabs[i].selected) {
-				current = li;
-				current.addClass("current");
-			}
-
-			li.click(function(e) {
-				chrome.tabs.update($.data(this, "tabId"), { selected : true });
-				current.removeClass("current");
-				current = $(this).addClass("current");
-			});
-
-			//if (localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true")
-			var details = localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true";
-				li.hover(function() { showActions(this, details)}, function() { hideActions(this, details)});
-			
-			list.append(li);
-		}
-		document.getElementById("field").onkeyup = function() {
-			if (typing == null) {
-				typing = setTimeout(refresh, TYPING_DELAY);
-			}
-			else {
-				clearTimeout(typing);
-				typing = setTimeout(refresh, TYPING_DELAY);
-			}
-		};
+	/* Seems hacky, but window.selected seems to return false always for browser actions */
+	chrome.windows.getLastFocused(function(_wind) {
+		_windId = _wind.id;
 	});
-	document.getElementById("field").focus();
+
+	chrome.windows.getAll({populate: true}, function(windows) {
+		var i = 0;
+		for (; i < windows.length; i++) {
+			addTabs(windows[i], _windId);
+		}
+	});
+
+	$(".tg_field").bind("keyup", function() {
+		if (typing == null) {
+			typing = setTimeout(refresh, TYPING_DELAY);
+		}
+		else {
+			clearTimeout(typing);
+			typing = setTimeout(refresh, TYPING_DELAY);
+		}
+	});
+	$(".tg_field")[0].focus();
 }
+function addTabs(wind, windId) {
+	var i = 0;
+	var tabs = wind.tabs;
+	if (tabs.length == 0)
+		return;
+
+	var list = $("<ul class='tg_tab_list'>");
+
+	for (; i < tabs.length ; i++) {
+		var li = $("<li>");
+		$.data(li[0], "tabId", tabs[i].id);
+		li.append(createActions(li));
+		li.append(createLink(tabs[i].favIconUrl, tabs[i].title, tabs[i].url));
+		li.append(createDescription(tabs[i].url));
+
+		if (windId == wind.id && tabs[i].selected) {
+			current = li;
+			current.addClass("current");
+		}
+
+		li.click(function(e) {
+			chrome.tabs.update($.data(this, "tabId"), { selected : true });
+			current.removeClass("current");
+			current = $(this).addClass("current");
+		});
+
+		//if (localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true")
+		var details = localStorage["showURL"] == "true" && localStorage["hoverURL"] == "true";
+			li.hover(function() { showActions(this, details)}, function() { hideActions(this, details)});
+		
+		list.append(li);
+	}
+	
+	if (windId == wind.id) {
+		$(".scrollable").prepend(list);
+		if (localStorage["highlightWindow"] == "true")
+			list.addClass("tg_focused_window");
+	}
+	else {
+		$(".scrollable").append(list);
+	}
+
+}
+
 function showActions(tab, details) {
 	$(tab).toggleClass("hover");
 	if (details)
@@ -66,18 +95,28 @@ function hideActions(tab, details) {
 /* Refresh the tab list after the delay */
 function refresh() {
 	typing = null;
-	var value = $("#field").val();
+	var value = $(".tg_field").val();
 	var exp = null;
 	if (value != null && value.replace(/^\s*/,"").length > 0)
 		exp = value;
 	var re = exp != null ? new RegExp(exp, "i") : null;
 
-	$("#list > li > .label").each(function(idx) {
+	$(".tg_tab_list > li > .label").each(function(idx) {
 		if (re != null && !re.test($.data(this, "url")) && !re.test($(this).find("span").text())) {
 			$(this).parent().hide();
+			
 		}
 		else {
 			$(this).parent().show();
+		}
+	});
+	$(".tg_tab_list").show();
+	$(".tg_tab_list").each(function(idx) {
+		if ($(this).find("li:visible").size() > 0) {
+			$(this).show();
+		}
+		else {
+			$(this).hide();
 		}
 	});
 }
@@ -113,14 +152,15 @@ function createActions(item) {
 	return actionContainer;
 }
 </script>
-<body onload="load()">
-<div id="content">
-<div id="search">
-<input id="field">
+<body onload="load()" class="tabglutton">
+<div class="tg_content">
+<div class="tg_search">
+<input class="tg_field">
 </div>
 <div class="scrollable" >
-<ul id="list"></ul>
+<!--<ul class="tg_tab_list"></ul>-->
 </div>
 </div>
 </body>
 </html>
+

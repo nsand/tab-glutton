@@ -1,9 +1,9 @@
-body {
+.tabglutton {
 	width: 340px;
 	margin: 0;
 	overflow-x:hidden;
 }
-#content {
+.tabglutton .tg_content {
 	width: 335px;
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: #ebeff9;
@@ -15,11 +15,11 @@ body {
 }
 
 /* Filtering */
-#search {
+.tabglutton .tg_search {
 	background-color: #ebeff9;
 	padding: 2px;
 }
-#field {
+.tabglutton .tg_field {
 	width: 99%;
 	border: 1px solid #b5c7de;
 	-webkit-border-top-left-radius: 3px;
@@ -29,21 +29,29 @@ body {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #efefef), color-stop(.50, #fff));
 }
 
-#field:focus {
+.tabglutton .tg_field:focus {
 	outline: none;
 }
 
-li {
+.tabglutton li {
 	list-style: none;
 }
 
-#content #list {
+.tabglutton .tg_content .tg_tab_list {
 	margin: 0;
-	padding: 0;
+	padding: 2px 0;
+}
+
+.tabglutton .scrollable {
 	overflow-x: hidden;
 	max-height: 500px;
 }
-#content #list > li {
+
+.tabglutton .tg_focused_window {
+	background-color: #c2cdc6;
+	border-radius: 3px;
+}
+.tabglutton .tg_content .tg_tab_list > li {
 	margin: 2px;
 	padding: 0 2px;
 	background-color: #f4f6fc;
@@ -53,14 +61,14 @@ li {
 	-webkit-border-bottom-right-radius: 5px; 
 	border: 2px solid #b5c7de;
 }
-#content #list > li.current {
+.tabglutton .tg_content .tg_tab_list > li.current {
 	border: 3px solid #004080;
 }
-#content #list > li:hover {
+.tabglutton .tg_content .tg_tab_list > li:hover {
 	cursor: pointer;
 	background-color: #e4e7f0;
 }
-div.label {
+.tabglutton div.label {
 	font-size: 80%;
 	color: #000000;
 	white-space: nowrap;
@@ -68,17 +76,17 @@ div.label {
 	text-overflow: ellipsis;
 	line-height: 20px;
 }
-.current div.label {
+.tabglutton .current div.label {
 	font-weight: bold;
 }
-div.label > .favicon {
+.tabglutton div.label > .favicon {
 	height: 16px;
 	width: 16px;
 	border: 0 none;
 	padding: 2px;
 	float: left;
 }
-.description {
+.tabglutton .description {
 	font-size: 65%;
 	color: #8f8f8f;
 	margin: 0;
@@ -89,21 +97,21 @@ div.label > .favicon {
 	display: none;
 }
 
-.description.detail {
+.tabglutton .description.detail {
 	display: block;
 }
 
 /* Actions */
-.actions {
+.tabglutton .actions {
 	float: right;
 	display: none;
 	padding: 0;
 	margin: 0;
 }
-li.hover .actions {
+.tabglutton li.hover .actions {
 	display: inline-block;
 }
-.close {
+.tabglutton .close {
 	background-image: url("../img/close.png");
 	background-repeat:  no-repeat;
 	background-color: #e4e7f0;
@@ -113,6 +121,6 @@ li.hover .actions {
 	width: 12px;
 	height: 12px;
 }
-.close:hover {
+.tabglutton .close:hover {
 	background-image: url("../img/close_hover.png");
 }
