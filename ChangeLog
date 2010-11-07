@@ -1,3 +1,7 @@
+0.4 [2010-11-07]
+- Support for tabs across multiple windows
+- Added a new preference to highlight tabs within the currently selected window
+
 0.2 [2010-01-16]
 
 - Tabs can be closed from the popup UI [#2]
