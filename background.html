@@ -42,6 +42,12 @@ function init() {
 		}
 	});*/
 }
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+	chrome.tabs.getAllInWindow(null, function(allTabs) {
+		sendResponse({tabs: allTabs});
+	});
+
+});
 </script>
 </head>
 <body onload="init()">

@@ -1,119 +1,119 @@
 .tabglutton {
-	width: 340px;
-	margin: 0;
-	overflow-x:hidden;
+	width: 340px !important;
+	margin: 0 !important;
+	overflow-x:hidden !important;
 }
 
 .tabglutton .tg_content {
-	width: 335px;
-	font-family: Helvetica, Arial, sans-serif;
-	background-color: #ebeff9;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	border: 1px solid #efefef; 
+	width: 335px !important;
+	font-family: Helvetica, Arial, sans-serif !important;
+	background-color: #ebeff9 !important;
+	-webkit-border-top-left-radius: 5px !important;
+	-webkit-border-top-right-radius: 5px !important;
+	-webkit-border-bottom-left-radius: 5px !important;
+	-webkit-border-bottom-right-radius: 5px !important;
+	border: 1px solid #efefef !important; 
 }
 
 /* Filtering */
 .tabglutton .tg_search {
-	background-color: #ebeff9;
-	padding: 2px;
+	background-color: #ebeff9 !important;
+	padding: 2px !important;
 }
 .tabglutton .tg_field {
-	width: 99%;
-	border: 1px solid #b5c7de;
-	-webkit-border-top-left-radius: 3px;
-	-webkit-border-top-right-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px; 
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #efefef), color-stop(.50, #fff));
+	width: 99% !important;
+	border: 1px solid #b5c7de !important;
+	-webkit-border-top-left-radius: 3px !important;
+	-webkit-border-top-right-radius: 3px !important;
+	-webkit-border-bottom-left-radius: 3px !important;
+	-webkit-border-bottom-right-radius: 3px !important; 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #efefef), color-stop(.50, #fff)) !important;
 }
 
 .tabglutton .tg_field:focus {
-	outline: none;
+	outline: none !important;
 }
 
 .tabglutton li {
-	list-style: none;
+	list-style: none !important;
 }
 
 .tabglutton .tg_tab_list {
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
-	max-height: 500px;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow-x: hidden !important;
+	max-height: 500px !important;
 }
 .tabglutton .tg_tab_list > li {
-	margin: 2px;
-	padding: 0 2px;
-	background-color: #f4f6fc;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px; 
-	border: 2px solid #b5c7de;
+	margin: 2px !important;
+	padding: 0 2px !important;
+	background-color: #f4f6fc !important;
+	-webkit-border-top-left-radius: 5px !important;
+	-webkit-border-top-right-radius: 5px !important;
+	-webkit-border-bottom-left-radius: 5px !important;
+	-webkit-border-bottom-right-radius: 5px !important; 
+	border: 2px solid #b5c7de !important;
 }
 .tabglutton .tg_tab_list > li.current {
-	border: 3px solid #004080;
+	border: 3px solid #004080 !important;
 }
 .tabglutton .tg_tab_list > li:hover {
-	cursor: pointer;
-	background-color: #e4e7f0;
+	cursor: pointer !important;
+	background-color: #e4e7f0 !important;
 }
 .tabglutton div.label {
-	font-size: 80%;
-	color: #000000;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	line-height: 20px;
+	font-size: 80% !important;
+	color: #000000 !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	line-height: 20px !important;
 }
 .tabglutton .current div.label {
-	font-weight: bold;
+	font-weight: bold !important;
 }
 .tabglutton div.label > .favicon {
-	height: 16px;
-	width: 16px;
-	border: 0 none;
-	padding: 2px;
-	float: left;
+	height: 16px !important;
+	width: 16px !important;
+	border: 0 none !important;
+	padding: 2px !important;
+	float: left !important;
 }
 .tabglutton .description {
-	font-size: 65%;
-	color: #8f8f8f;
-	margin: 0;
-	padding-left: 5px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: none;
+	font-size: 65% !important;
+	color: #8f8f8f !important;
+	margin: 0 !important;
+	padding-left: 5px !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	display: none !important;
 }
 
 .tabglutton .description.detail {
-	display: block;
+	display: block !important;
 }
 
 /* Actions */
 .tabglutton .actions {
-	float: right;
-	display: none;
-	padding: 0;
-	margin: 0;
+	float: right !important;
+	display: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 .tabglutton li.hover .actions {
-	display: inline-block;
+	display: inline-block !important;
 }
 .tabglutton .close {
-	background-image: url("../img/close.png");
-	background-repeat:  no-repeat;
-	background-color: #e4e7f0;
-	background-position: center;
-	z-index: 999999;
-	padding: 3px;
-	width: 12px;
-	height: 12px;
+	background-image: url("../img/close.png") !important;
+	background-repeat:  no-repeat !important;
+	background-color: #e4e7f0 !important;
+	background-position: center !important;
+	z-index: 999999 !important;
+	padding: 3px !important;
+	width: 12px !important;
+	height: 12px !important;
 }
 .tabglutton .close:hover {
-	background-image: url("../img/close_hover.png");
+	background-image: url("../img/close_hover.png") !important;
 }
