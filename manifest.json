@@ -10,5 +10,9 @@
 	"default_title": "Tab Glutton",
 	"default_icon": "tab_glutton_19.png",
 	"popup": "popup.html"
-}
+},
+"content_scripts": [{
+	"matches": ["http://*/*"],
+	"js": ["lib/keybinding.js"]
+}]
 }

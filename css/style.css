@@ -1,10 +1,11 @@
 .tabglutton {
-	width: 340px;
-	margin: 0;
+	width: 100%;
+	margin: 0 !important;
+	margin-right: 0px !important;
 	overflow-x:hidden;
 }
 .tabglutton .tg_content {
-	width: 335px;
+	width: 400px;
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: #ebeff9;
 	-webkit-border-top-left-radius: 5px;

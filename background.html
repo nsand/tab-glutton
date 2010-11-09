@@ -2,6 +2,7 @@
 <html>
 <head>
 <script type="text/javascript">
+var popupWindow;
 function init() {
 	var count = 0;
 	// set up the initial tab count
@@ -42,6 +43,19 @@ function init() {
 		}
 	});*/
 }
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+	if (request.action == "popup") {
+		if (popupWindow != null) {
+			popupWindow.close();
+		}
+		
+		popupWindow = window.open(chrome.extension.getURL("popup.html"), "Tab Glutton", "width=400,height=530");
+		sendResponse({response: "open"});
+	}
+	else {
+		sendResponse({});
+	}
+});
 </script>
 </head>
 <body onload="init()">
