@@ -1,18 +1,22 @@
 {
-"name": "Tab Glutton",
-"version": "0.4.0",
-"permissions": ["tabs"],
-"description": "Tab Glutton helps you manage and navigate the growing number of tabs in your browser.",
-"icons": { "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
-"background_page": "background.html",
-"options_page": "options.html",
-"browser_action": {
-	"default_title": "Tab Glutton",
-	"default_icon": "tab_glutton_19.png",
-	"popup": "popup.html"
-},
-"content_scripts": [{
-	"matches": ["http://*/*"],
-	"js": ["lib/keybinding.js"]
-}]
+	"manifest_version": 2,
+	"name": "Tab Glutton",
+	"version": "1.0.0",
+	"permissions": ["tabs"],
+	"description": "Tab Glutton helps you manage and navigate the growing number of tabs in your browser.",
+	"icons": { "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
+	"options_page": "options.html",
+	"browser_action": {
+		"default_title": "Tab Glutton",
+		"default_icon": "tab_glutton_19.png",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [{
+		"matches": ["http://*/*"],
+		"js": ["lib/keybinding.js"]
+	}]
 }

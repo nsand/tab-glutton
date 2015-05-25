@@ -12,7 +12,7 @@
 	-webkit-border-top-right-radius: 5px;
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
-	border: 1px solid #efefef; 
+	border: 1px solid #efefef;
 }
 
 /* Filtering */
@@ -26,7 +26,7 @@
 	-webkit-border-top-left-radius: 3px;
 	-webkit-border-top-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px; 
+	-webkit-border-bottom-right-radius: 3px;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #efefef), color-stop(.50, #fff));
 }
 
@@ -59,7 +59,7 @@
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
 	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px; 
+	-webkit-border-bottom-right-radius: 5px;
 	border: 2px solid #b5c7de;
 }
 .tabglutton .tg_content .tg_tab_list > li.current {
@@ -109,19 +109,17 @@
 	padding: 0;
 	margin: 0;
 }
-.tabglutton li.hover .actions {
+.tabglutton li:hover .actions, .tabglutton li:focus .actions {
 	display: inline-block;
 }
 .tabglutton .close {
-	background-image: url("../img/close.png");
-	background-repeat:  no-repeat;
-	background-color: #e4e7f0;
-	background-position: center;
+	line-height: 20px;
+	font-size: 18px;
+	font-weight: 700;
 	z-index: 999999;
-	padding: 3px;
-	width: 12px;
-	height: 12px;
+	padding-bottom: 3px;
+	padding-right: 3px;
 }
 .tabglutton .close:hover {
-	background-image: url("../img/close_hover.png");
+	color: #ef4e38;
 }
