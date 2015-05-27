@@ -6,7 +6,7 @@
 }
 .tabglutton .tg_content {
 	width: 400px;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color: #ebeff9;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -55,10 +55,10 @@
 .tabglutton .tg_content .tg_tab_list > li {
 	margin: 5px 2px;
 	padding: 0 2px;
-	background-color: #f4f6fc;
+	background-color: #fcfcfc;
 	/*border: 2px solid #b5c7de;*/
 	box-shadow: 0 1px 1px #b5c7de;
-	transition: box-shadow 0.3s ease-out;
+	transition: box-shadow 0.2s ease-out;
 }
 .tabglutton .tg_content .tg_tab_list > li.current {
 	border: 2px solid #004080;
@@ -66,9 +66,15 @@
 }
 .tabglutton .tg_content .tg_tab_list > li:hover {
 	cursor: pointer;
-	background-color: #e4e7f0;
-	box-shadow: 0 3px 3px #b5c7de;
+	background-color: #fefefe;
+	box-shadow: 0 3px 6px #b5c7de;
 }
+
+.tabglutton .tg_content .tg-group-title {
+	font-size: 18px;
+	text-align: center;
+}
+
 .tabglutton div.label {
 	font-size: 80%;
 	color: #000000;
@@ -113,7 +119,7 @@
 	display: inline-block;
 }
 .tabglutton .close {
-	line-height: 20px;
+	line-height: 18px;
 	font-size: 18px;
 	font-weight: 700;
 	z-index: 999999;

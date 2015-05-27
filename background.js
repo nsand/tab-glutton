@@ -1,7 +1,6 @@
 chrome.runtime.onStartup.addListener(init);
 chrome.runtime.onInstalled.addListener(init);
 
-chrome.browserAction.onClicked.addListener(popup);
 
 function init() {
 	var count = 0;
@@ -22,8 +21,4 @@ function init() {
 	chrome.tabs.onRemoved.addListener(function(tab) {
 		chrome.browserAction.setBadgeText({text: "" + (--count)});
 	});
-}
-
-function popup() {
-	console.log(arguments);
 }
