@@ -17,7 +17,7 @@
 
 /* Filtering */
 .tabglutton .tg_search {
-	background-color: #ebeff9;
+	background-color: #e8ebf1;
 	padding: 2px;
 }
 .tabglutton .tg_field {
@@ -53,21 +53,21 @@
 	border-radius: 3px;
 }
 .tabglutton .tg_content .tg_tab_list > li {
-	margin: 2px;
+	margin: 5px 2px;
 	padding: 0 2px;
 	background-color: #f4f6fc;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	border: 2px solid #b5c7de;
+	/*border: 2px solid #b5c7de;*/
+	box-shadow: 0 1px 1px #b5c7de;
+	transition: box-shadow 0.3s ease-out;
 }
 .tabglutton .tg_content .tg_tab_list > li.current {
-	border: 3px solid #004080;
+	border: 2px solid #004080;
+	box-shadow: 0 0 3px #004080;
 }
 .tabglutton .tg_content .tg_tab_list > li:hover {
 	cursor: pointer;
 	background-color: #e4e7f0;
+	box-shadow: 0 3px 3px #b5c7de;
 }
 .tabglutton div.label {
 	font-size: 80%;

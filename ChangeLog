@@ -1,3 +1,6 @@
+1.0 [2015-05-26]
+- Upgrade to manifest_version 2
+
 0.4 [2010-11-07]
 - Support for tabs across multiple windows
 - Added a new preference to highlight tabs within the currently selected window
