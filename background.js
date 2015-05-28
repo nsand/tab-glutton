@@ -21,4 +21,20 @@ chrome.runtime.onInstalled.addListener(init);*/
 	chrome.tabs.onRemoved.addListener(function(tab) {
 		chrome.browserAction.setBadgeText({text: "" + (--count)});
 	});
+
+	var popupWindow;
+
+	chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+		if (request.action == "popup") {
+			if (popupWindow) {
+				popupWindow.close();
+			}
+
+			popupWindow = window.open(chrome.extension.getURL("popup.html"), "Tab Glutton", "width=400,height=530");
+			sendResponse({response: "open"});
+		}
+		else {
+			sendResponse({});
+		}
+	});
 })();

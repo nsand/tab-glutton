@@ -16,7 +16,7 @@
 		"persistent": false
 	},
 	"content_scripts": [{
-		"matches": ["http://*/*"],
+		"matches": ["*://*/*"],
 		"js": ["lib/keybinding.js"]
 	}]
 }
