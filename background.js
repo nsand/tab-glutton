@@ -1,8 +1,8 @@
-chrome.runtime.onStartup.addListener(init);
-chrome.runtime.onInstalled.addListener(init);
+/*chrome.runtime.onStartup.addListener(init);
+chrome.runtime.onInstalled.addListener(init);*/
 
 
-function init() {
+(function init() {
 	var count = 0;
 	// set up the initial tab count
 	chrome.windows.getAll({"populate": true}, function(windows) {
@@ -21,4 +21,4 @@ function init() {
 	chrome.tabs.onRemoved.addListener(function(tab) {
 		chrome.browserAction.setBadgeText({text: "" + (--count)});
 	});
-}
+})();
