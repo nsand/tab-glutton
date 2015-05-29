@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Tab Glutton",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"permissions": ["tabs"],
 	"description": "Tab Glutton helps you manage and navigate the growing number of tabs in your browser.",
 	"icons": { "48": "tab_glutton_48.png", "128": "tab_glutton_128.png"},
