@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './tab-item.scss';
 
 export default class TabItem extends React.Component {
   close() {
@@ -6,10 +7,10 @@ export default class TabItem extends React.Component {
   }
   render() {
     return (
-      <li class="tab-item">
+      <li className={styles.tabItem}>
         <img src={this.props.tab.favIconUrl || (this.props.tab.favIconUrl === 'chrome://newtab/' ? 'img/chromium_logo.png' : 'img/defaultIcon.png')}></img>
-        <span class="label">{this.props.tab.title}</span>
-        <span onClick={this.close.bind(this)}>&times;</span>
+        <span className="label">{this.props.tab.title}</span>
+        <span className={styles.close} onClick={this.close.bind(this)}>&times;</span>
       </li>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import TabItem from '../tab-item/tab-item.jsx';
+import styles from './popup.scss';
 
 export default class Popup extends React.Component {
   render() {
@@ -7,7 +8,7 @@ export default class Popup extends React.Component {
     return (
       <section>
         <h2>{tabs.length} tabs</h2>
-        <ul class="tab-list">
+        <ul className={styles.tabList}>
           {
             tabs.map(tab => <TabItem key={tab.id} tab={tab}></TabItem>)
           }
