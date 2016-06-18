@@ -3,6 +3,7 @@ import styles from './tab-item.scss';
 
 export default class TabItem extends React.Component {
   close() {
+    chrome.tabs.remove(this.props.tab.id);
     console.log(`Closing ${this.props.tab.title}`);
   }
   render() {
