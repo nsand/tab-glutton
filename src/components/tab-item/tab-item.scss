@@ -1,18 +1,33 @@
 .tabItem {
   list-style: none;
   cursor: default;
+  padding: 0 16px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+
   img {
-    border: 1px solid #ccc;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     display: inline-block;
-    margin-right: 10px;
   }
 }
 
+.tabTitle {
+  padding-left: 32px;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .close {
-  margin-left: 10px;
+  margin-left: 16px;
+  font-weight: 700;
+  font-size: 16px;
+
   &:hover {
+    color: #000;
     cursor: pointer;
   }
 }
