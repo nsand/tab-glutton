@@ -4,14 +4,11 @@ chrome.runtime.onInstalled.addListener(init);*/
 
 (function init() {
 
-	// set up the initial tab count
-	chrome.windows.getAll({'populate': true}, function (windows) {
-		var count = 0;
-		windows.forEach(function (win) {
-			count += win.tabs.length;
+	function updateCount() {
+		chrome.tabs.query({}, function (tabs) {
+			chrome.browserAction.setBadgeText({text: '' + tabs.length});
 		});
-		chrome.browserAction.setBadgeText({text: '' + count});
-	});
+	}
 
 	// listen for new tabs
 	chrome.tabs.onCreated.addListener(updateCount);
@@ -19,11 +16,7 @@ chrome.runtime.onInstalled.addListener(init);*/
 	// listen for closed tabs
 	chrome.tabs.onRemoved.addListener(updateCount);
 
-	function updateCount() {
-		chrome.tabs.query({}, function (tabs) {
-			chrome.browserAction.setBadgeText({text: '' + tabs.length});
-		});
-	}
+	updateCount();
 
 	var popupWindow;
 
