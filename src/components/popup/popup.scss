@@ -15,3 +15,24 @@
   padding: 0 16px;
   font-weight: normal;
 }
+
+.navigation {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  background-color: #009688;
+}
+
+.filter {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  height: 36px;
+  padding: 5px 10px;
+}
+
+.main {
+  margin-top: 46px;
+}
