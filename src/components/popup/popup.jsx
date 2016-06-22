@@ -6,7 +6,8 @@ export default class Popup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      windows: []
+      windows: [],
+      filter: ''
     };
   }
   componentDidMount() {
@@ -15,24 +16,30 @@ export default class Popup extends React.Component {
       this.setState({windows: windows});
     });
   }
+  filter(event) {
+    this.setState({filter: event.target.value});
+  }
   render() {
+    const {filter, windows} = this.state;
     return (
       <div>
         <nav className={styles.navigation}>
           <div>
-            <input className={styles.filter} type="text" placeholder="Search"/>
+            <input className={styles.filter} type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
           </div>
         </nav>
         <main className={styles.main}>
           {
-            this.state.windows.map($window =>
-              <section>
+            windows.map($window =>
+              <section key={$window.id}>
                 <header className={styles.heading}>
                   <h2 className={styles.headingText}>{$window.tabs.length} tabs</h2>
                 </header>
                 <ul className={styles.tabList}>
                   {
-                    $window.tabs.map(tab => <TabItem key={tab.id} tab={tab}></TabItem>)
+                    $window.tabs
+                      .filter(tab => filter.trim().length === 0 || tab.title.indexOf(filter) >= 0 || tab.url.indexOf(filter) >= 0)
+                      .map(tab => <TabItem key={tab.id} tab={tab}></TabItem>)
                   }
                 </ul>
               </section>
