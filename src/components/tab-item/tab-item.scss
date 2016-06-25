@@ -5,6 +5,7 @@
   height: 48px;
   display: flex;
   align-items: center;
+  border-left: 3px solid transparent;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.02);

@@ -1,0 +1,4 @@
+.tabItem {
+  composes: tabItem from './tab-item.scss';
+  border-left: 3px solid #4DB6AC;
+}
