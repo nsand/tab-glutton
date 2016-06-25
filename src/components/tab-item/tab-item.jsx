@@ -22,10 +22,13 @@ export default class TabItem extends React.Component {
     if (this.state.showUrl === 'true') {
       additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
     }
+    if (!tab.favIconUrl || tab.favIconUrl.indexOf('chrome://') === 0) {
+      tab.favIconUrl = 'img/empty.svg';
+    }
 
     return (
       <li className={tab.selected ? activeStyles.tabItem : styles.tabItem} onClick={this.focus.bind(this)}>
-        <img src={tab.favIconUrl || (tab.favIconUrl === 'chrome://newtab/' ? 'img/chromium_logo.png' : 'img/defaultIcon.png')}></img>
+        <img src={tab.favIconUrl}></img>
         <div className={styles.tabDetails}>
           <div className={styles.tabTitle}>{tab.title}</div>
           {additionalDetails}
