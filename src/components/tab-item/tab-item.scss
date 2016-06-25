@@ -18,9 +18,13 @@
   }
 }
 
-.tabTitle {
-  padding-left: 32px;
+.tabDetails {
   flex: 1;
+  padding-left: 32px;
+  overflow: hidden;
+}
+
+.tabText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
