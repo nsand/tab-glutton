@@ -11,13 +11,22 @@ export default class Popup extends React.Component {
     };
   }
   componentDidMount() {
-    // TODO Do not rely on this to populate the UI; use redux
     chrome.windows.getAll({populate: true}, (windows) => {
       this.setState({windows: windows});
     });
   }
   filter(event) {
     this.setState({filter: event.target.value});
+  }
+  closeTab(tab, event) {
+    // Don't close the window when closing tabs
+    event.stopPropagation();
+
+    // Close the tab and refresh the list of windows
+    chrome.tabs.remove(tab.id);
+    chrome.windows.getAll({populate: true}, (windows) => {
+      this.setState({windows: windows});
+    });
   }
   render() {
     const {filter, windows} = this.state;
@@ -39,7 +48,7 @@ export default class Popup extends React.Component {
                   {
                     $window.tabs
                       .filter(tab => filter.trim().length === 0 || tab.title.indexOf(filter) >= 0 || tab.url.indexOf(filter) >= 0)
-                      .map(tab => <TabItem key={tab.id} tab={tab}></TabItem>)
+                      .map(tab => <TabItem key={tab.id} tab={tab} onClose={this.closeTab.bind(this)}></TabItem>)
                   }
                 </ul>
               </section>
