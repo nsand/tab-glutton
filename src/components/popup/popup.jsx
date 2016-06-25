@@ -47,7 +47,7 @@ export default class Popup extends React.Component {
         </nav>
         <main className={styles.main}>
           {
-            windows.map($window =>
+            windows.sort((left, right) => left.focused ? -1 : 1).map($window =>
               <section className={styles.window} key={$window.id}>
                 <header className={styles.heading}>
                   <h2 className={styles.headingText}>{$window.tabs.length} tabs</h2>
