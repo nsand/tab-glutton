@@ -1,4 +1,4 @@
-import Popup from './src/components/popup/popup.jsx';
+import Popup from './components/popup/popup.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

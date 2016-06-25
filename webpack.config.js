@@ -1,9 +1,10 @@
 'use strict';
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    index: './index.jsx'
+    index: './src/index.jsx'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -25,5 +26,10 @@ module.exports = {
       }
     ]
   },
+  plugins: [new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': '"production"'
+    }
+  })],
   devtool: 'cheap-module-source-map'
 };
