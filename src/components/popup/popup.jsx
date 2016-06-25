@@ -24,9 +24,16 @@ export default class Popup extends React.Component {
     event.stopPropagation();
 
     // Close the tab and refresh the list of windows
-    chrome.tabs.remove(tab.id);
-    chrome.windows.getAll({populate: true}, (windows) => {
-      this.setState({windows: windows});
+    chrome.tabs.remove(tab.id, () => {
+      const windows = this.state.windows.reduce((windows, $window) => {
+        $window.tabs = $window.tabs.filter($tab => $tab.id !== tab.id);
+        if ($window.tabs.length > 0) {
+          // Add the window back only if it has some tabs
+          windows.push($window);
+        }
+        return windows;
+      }, []);
+      this.setState({windows});
     });
   }
   render() {
