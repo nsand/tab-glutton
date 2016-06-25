@@ -24,10 +24,17 @@
   overflow: hidden;
 }
 
-.tabText {
+.tabTitle {
+  color: #212121;
+  font-size: 13px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.tabUrl {
+  composes: tabTitle;
+  color: #9E9E9E;
 }
 
 .close {

@@ -20,14 +20,14 @@ export default class TabItem extends React.Component {
     const {tab, onClose} = this.props;
     let additionalDetails;
     if (this.state.showUrl === 'true') {
-      additionalDetails = <div className={styles.tabText}>{tab.url}</div>;
+      additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
     }
 
     return (
       <li className={tab.selected ? activeStyles.tabItem : styles.tabItem} onClick={this.focus.bind(this)}>
         <img src={tab.favIconUrl || (tab.favIconUrl === 'chrome://newtab/' ? 'img/chromium_logo.png' : 'img/defaultIcon.png')}></img>
         <div className={styles.tabDetails}>
-          <div className={styles.tabText}>{tab.title}</div>
+          <div className={styles.tabTitle}>{tab.title}</div>
           {additionalDetails}
         </div>
         <span className={styles.close} onClick={onClose.bind(null, tab)}>×</span>
