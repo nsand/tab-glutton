@@ -14,6 +14,7 @@ export default class Popup extends React.Component {
     chrome.windows.getAll({populate: true}, (windows) => {
       this.setState({windows: windows});
     });
+    this.refs.filter.focus();
   }
   filter(event) {
     this.setState({filter: event.target.value});
@@ -34,7 +35,7 @@ export default class Popup extends React.Component {
       <div>
         <nav className={styles.navigation}>
           <div>
-            <input className={styles.filter} type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
+            <input className={styles.filter} ref="filter" type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
           </div>
         </nav>
         <main className={styles.main}>
