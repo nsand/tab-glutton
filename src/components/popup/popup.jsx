@@ -17,7 +17,7 @@ export default class Popup extends React.Component {
     this.refs.filter.focus();
   }
   filter(event) {
-    this.setState({filter: event.target.value});
+    this.setState({filter: event.target.value.trim().toLocaleLowerCase()});
   }
   closeTab(tab, event) {
     // Don't close the window when closing tabs
@@ -55,7 +55,7 @@ export default class Popup extends React.Component {
                 <ul className={styles.tabList}>
                   {
                     $window.tabs
-                      .filter(tab => filter.trim().length === 0 || tab.title.indexOf(filter) >= 0 || tab.url.indexOf(filter) >= 0)
+                      .filter(tab => filter.length === 0 || tab.title.toLocaleLowerCase().indexOf(filter) >= 0 || tab.url.toLocaleLowerCase().indexOf(filter) >= 0)
                       .map(tab => <TabItem key={tab.id} tab={tab} onClose={this.closeTab.bind(this)}></TabItem>)
                   }
                 </ul>
