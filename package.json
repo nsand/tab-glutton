@@ -5,8 +5,10 @@
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production rm -rf bundles && webpack --progress --colors",
+    "build": "rm -rf bundles && NODE_ENV=production webpack --progress --colors",
     "bundle": "rm -rf dist; mkdir dist; cp -R bundles img lib pages LICENSE manifest.json dist",
+    "version": "npm run version:manifest && npm run build && npm run bundle && git add .",
+    "postversion": "git push && git push --tags",
     "version:manifest": "node update-manifest",
     "start": "webpack --progress --colors --watch"
   },
