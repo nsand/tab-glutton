@@ -1,13 +1,14 @@
 'use strict';
 const path = require('path');
 const webpack = require('webpack');
+const plugins = [];
 
 module.exports = {
   entry: {
     index: './src/index.jsx'
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'bundles'),
     filename: '[name].js'
   },
   module: {
@@ -26,10 +27,17 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.DefinePlugin({
+  plugins
+};
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': '"production"'
     }
-  })],
-  devtool: 'cheap-module-source-map'
-};
+  }));
+  plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
+}
+else {
+  module.exports.devtool = 'cheap-module-source-map';
+}
