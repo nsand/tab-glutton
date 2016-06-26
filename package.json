@@ -5,7 +5,9 @@
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production webpack --progress --colors",
+    "build": "NODE_ENV=production rm -rf bundles && webpack --progress --colors",
+    "bundle": "rm -rf dist; mkdir dist; cp -R bundles img lib pages LICENSE manifest.json dist",
+    "version:manifest": "node update-manifest",
     "start": "webpack --progress --colors --watch"
   },
   "repository": {
