@@ -23,7 +23,7 @@ export default class TabItem extends React.Component {
       additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
     }
     if (!tab.favIconUrl || tab.favIconUrl.indexOf('chrome://') === 0) {
-      tab.favIconUrl = 'img/empty.svg';
+      tab.favIconUrl = '../img/empty.svg';
     }
 
     return (
