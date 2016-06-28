@@ -12,9 +12,9 @@ export default class Popup extends React.Component {
     };
   }
   componentDidMount() {
-    chrome.runtime.sendMessage({action: 'mru'}, (c) => {
+    chrome.runtime.sendMessage({action: 'mru'}, (mru) => {
       // Update the state with the most-recently used windows
-      this.setState({mru: c});
+      this.setState({mru});
     });
     chrome.windows.getAll({populate: true}, (windows) => {
       this.setState({windows: windows});
