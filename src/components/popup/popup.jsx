@@ -7,10 +7,15 @@ export default class Popup extends React.Component {
     super(props);
     this.state = {
       windows: [],
-      filter: ''
+      filter: '',
+      mru: {}
     };
   }
   componentDidMount() {
+    chrome.runtime.sendMessage({action: 'mru'}, (c) => {
+      // Update the state with the most-recently used windows
+      this.setState({mru: c});
+    });
     chrome.windows.getAll({populate: true}, (windows) => {
       this.setState({windows: windows});
     });
@@ -37,7 +42,7 @@ export default class Popup extends React.Component {
     });
   }
   render() {
-    const {filter, windows} = this.state;
+    const {filter, windows, mru} = this.state;
     return (
       <div>
         <nav className={styles.navigation}>
@@ -47,7 +52,15 @@ export default class Popup extends React.Component {
         </nav>
         <main className={styles.main}>
           {
-            windows.sort((left, right) => left.focused ? -1 : 1).map($window =>
+            windows.sort((left, right) => {
+              // Compare the timestamps, if they exist, from the mru state
+              const comp = (mru[right.id] || 0) - (mru[left.id] || 0);
+              if (comp === 0) {
+                // If there's no data, go off the focused field of the left item
+                return left.focused ? -1 : (right.id - left.id);
+              }
+              return comp;
+            }).map($window =>
               <section className={styles.window} key={$window.id}>
                 <header className={styles.heading}>
                   <h2 className={styles.headingText}>{$window.tabs.length} tabs</h2>
