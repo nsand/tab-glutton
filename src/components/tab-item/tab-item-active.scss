@@ -7,3 +7,8 @@
   composes: tabItem--expanded from './tab-item.scss';
   border-left: 3px solid #4DB6AC;
 }
+
+.tabItem--separated {
+  composes: tabItem--separated from './tab-item.scss';
+  border-left: 3px solid #4DB6AC;
+}
