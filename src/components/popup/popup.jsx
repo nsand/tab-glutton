@@ -19,6 +19,7 @@ export default class Popup extends React.Component {
     chrome.windows.getAll({populate: true}, (windows) => {
       this.setState({windows: windows});
     });
+    this.setState({isSeparated: JSON.parse(localStorage.getItem('isSeparated'))});
     this.refs.filter.focus();
   }
   filter(event) {
@@ -43,6 +44,7 @@ export default class Popup extends React.Component {
   }
   render() {
     const {filter, windows, mru} = this.state;
+    const cls = this.state.isSeparated ? '' : styles.window;
     return (
       <div>
         <nav className={styles.navigation}>
@@ -61,7 +63,7 @@ export default class Popup extends React.Component {
               }
               return comp;
             }).map($window =>
-              <section className={styles.window} key={$window.id}>
+              <section className={cls} key={$window.id}>
                 <header className={styles.heading}>
                   <h2 className={styles.headingText}>{$window.tabs.length} tabs</h2>
                 </header>

@@ -15,7 +15,8 @@ export default class TabItem extends React.Component {
 
     this.setState({
       showUrl: localStorage['showURL'],
-      isCollapsed
+      isCollapsed,
+      isSeparated: JSON.parse(localStorage.getItem('isSeparated'))
     });
   }
   focus(event) {
@@ -26,7 +27,15 @@ export default class TabItem extends React.Component {
   }
   render() {
     const {tab, onClose} = this.props;
-    const cls = `tabItem${this.state.isCollapsed ? '' : '--expanded'}`;
+    let enhancement = '';
+    if (this.state.isCollapsed && this.state.isSeparated) {
+      enhancement = '--separated';
+    }
+    else if (!this.state.isCollapsed) {
+      enhancement = '--expanded';
+    }
+    const cls = `tabItem${enhancement}`;
+    console.log(cls)
     let additionalDetails;
     if (this.state.showUrl === 'true') {
       additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
