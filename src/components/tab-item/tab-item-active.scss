@@ -2,3 +2,8 @@
   composes: tabItem from './tab-item.scss';
   border-left: 3px solid #4DB6AC;
 }
+
+.tabItem--expanded {
+  composes: tabItem--expanded from './tab-item.scss';
+  border-left: 3px solid #4DB6AC;
+}

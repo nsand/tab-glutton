@@ -8,7 +8,15 @@ export default class TabItem extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    this.setState({showUrl: localStorage['showURL']})
+    let isCollapsed = JSON.parse(localStorage.getItem('isCollapsed'));
+    if (isCollapsed === null) {
+      isCollapsed = true;
+    }
+
+    this.setState({
+      showUrl: localStorage['showURL'],
+      isCollapsed
+    });
   }
   focus(event) {
     const {tab} = this.props;
@@ -18,6 +26,7 @@ export default class TabItem extends React.Component {
   }
   render() {
     const {tab, onClose} = this.props;
+    const cls = `tabItem${this.state.isCollapsed ? '' : '--expanded'}`;
     let additionalDetails;
     if (this.state.showUrl === 'true') {
       additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
@@ -27,7 +36,7 @@ export default class TabItem extends React.Component {
     }
 
     return (
-      <li className={tab.selected ? activeStyles.tabItem : styles.tabItem} onClick={this.focus.bind(this)}>
+      <li className={tab.selected ? activeStyles[cls] : styles[cls]} onClick={this.focus.bind(this)}>
         <img src={tab.favIconUrl}></img>
         <div className={styles.tabDetails}>
           <div className={styles.tabTitle}>{tab.title}</div>
