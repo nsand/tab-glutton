@@ -1,6 +1,6 @@
 {
   "name": "tab-glutton",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "A Google Chrome tab management extension",
   "main": "background.js",
   "scripts": {
