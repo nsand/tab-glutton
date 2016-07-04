@@ -18,6 +18,12 @@
   }
 }
 
+.tabItem--expanded {
+  composes: tabItem;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,.137255), 0 4px 8px 0 rgba(0,0,0,.278431);
+  margin: 12px;
+}
+
 .tabDetails {
   flex: 1;
   padding-left: 32px;
