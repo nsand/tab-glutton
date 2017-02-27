@@ -57,7 +57,7 @@ export default class TabItem extends React.Component {
     }
     const pinClasses = `${styles.pin} ${isPinned ? styles['pin--active'] : ''}`;
     return (
-      <li className={tab.selected ? activeStyles[cls] : styles[cls]} onClick={this.focus.bind(this)}>
+      <li className={`${tab.selected ? activeStyles[cls] : styles[cls]} ${isPinned ? styles['tabItem--pinned'] : ''}`} onClick={this.focus.bind(this)}>
         <img src={tab.favIconUrl}></img>
         <div className={styles.tabDetails}>
           <div className={styles.tabTitle}>{tab.title}</div>
