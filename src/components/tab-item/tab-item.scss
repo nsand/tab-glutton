@@ -58,12 +58,76 @@
 }
 
 .close {
-  margin-left: 16px;
+  margin-left: 4px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
+  position: relative;
+  top: -3px;
 
   &:hover {
     color: #000;
     cursor: pointer;
   }
+}
+
+.tabItem:hover .pin {
+  opacity: 1;
+}
+.pin {
+  width: 32px;
+  height: 32px;
+  fill: #9E9E9E;
+  opacity: 0;
+
+  &:hover {
+    fill: #212121;
+  }
+
+}
+
+.pin.pin--active {
+  fill: #009688;
+  opacity: 1;
+
+  &:hover {
+    fill: #009688;
+  }
+}
+
+.plainButton {
+  -webkit-appearance: none;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.closeButton {
+  fill: #9E9E9E;
+
+  &:hover {
+    fill: #212121;
+  }
+}
+
+.tabItem:hover .actions, .tabItem.tabItem--pinned .actions {
+  max-width: 200px;
+  opacity: 1;
+  padding-left: 16px;
+  transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.tabItem.tabItem--pinned:not(:hover) .actions .plainButton:last-child {
+  display: none;
+}
+
+.actions {
+  max-width: 0;
+  transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
 }
