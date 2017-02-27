@@ -74,10 +74,9 @@
   opacity: 1;
 }
 .pin {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   fill: #9E9E9E;
-  cursor: pointer;
   opacity: 0;
 
   &:hover {
@@ -101,4 +100,29 @@
   border: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
+}
+
+.closeButton {
+  fill: #9E9E9E;
+
+  &:hover {
+    fill: #212121;
+  }
+}
+
+.tabItem:hover .actions {
+  max-width: 200px;
+  opacity: 1;
+  padding-left: 16px;
+  transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.actions {
+  max-width: 0;
+  transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
 }

@@ -63,12 +63,18 @@ export default class TabItem extends React.Component {
           <div className={styles.tabTitle}>{tab.title}</div>
           {additionalDetails}
         </div>
-        <button className={styles.plainButton} onClick={this.togglePin}>
-          <svg className={pinClasses}>
-            <path d="M9 6v1h.5v5L8 13v2h3.5v4h1v-4H16v-2l-1.5-1V7h.5V6H9z" />
-          </svg>
-        </button>
-        <span className={styles.close} onClick={onClose.bind(null, tab)}>×</span>
+        <span className={styles.actions}>
+          <button className={styles.plainButton} onClick={this.togglePin}>
+            <svg className={pinClasses} viewBox="0 0 24 24">
+              <path d="M9 6v1h.5v5L8 13v2h3.5v4h1v-4H16v-2l-1.5-1V7h.5V6H9z" />
+            </svg>
+          </button>
+          <button className={styles.plainButton} onClick={onClose.bind(null, tab)}>
+            <svg className={styles.closeButton} viewBox="0 0 24 24" height="24" width="24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            </svg>
+          </button>
+        </span>
       </li>
     );
   }
