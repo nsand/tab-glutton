@@ -131,3 +131,16 @@
   display: flex;
   align-items: center;
 }
+
+.favicon {
+  position: relative;
+}
+
+.audible {
+  fill: #9E9E9E;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: -7px;
+  right: -10px;
+}
