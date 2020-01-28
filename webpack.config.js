@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -23,11 +23,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css?modules', 'sass']
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader?modules', 'sass-loader']
       }
     ]
   },
-  plugins
+  plugins,
+  optimization: {
+    minimize: true
+  },
+  mode: 'production'
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -36,7 +41,6 @@ if (process.env.NODE_ENV === 'production') {
       'NODE_ENV': '"production"'
     }
   }));
-  plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
 }
 else {
   module.exports.devtool = 'cheap-module-source-map';

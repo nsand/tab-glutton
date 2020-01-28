@@ -1,6 +1,7 @@
 import React from 'react';
 import TabItem from '../tab-item/tab-item.jsx';
 import styles from './popup.scss';
+import { Navigation, Filter } from './style.js';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -47,11 +48,11 @@ export default class Popup extends React.Component {
     const cls = this.state.isSeparated ? '' : styles.window;
     return (
       <div>
-        <nav className={styles.navigation}>
+        <Navigation>
           <div>
-            <input className={styles.filter} ref="filter" type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
+            <Filter ref="filter" type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
           </div>
-        </nav>
+        </Navigation>
         <main className={styles.main}>
           {
             windows.sort((left, right) => {
