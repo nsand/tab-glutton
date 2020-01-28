@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Navigation = styled.nav`
   position: fixed;
@@ -8,7 +8,7 @@ export const Navigation = styled.nav`
   justify-content: center;
   align-items: center;
   top: 0;
-  background-color: #009688;
+  background-color: ${({ theme: { navigation } }) => navigation};
   height: 56px;
   box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px,
     rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
@@ -29,4 +29,39 @@ export const Filter = styled.input`
   &::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.8);
   }
+`;
+
+export const Main = styled.main`
+  margin-top: 56px;
+`;
+
+export const Section = styled.section`
+  &.window {
+    &:not(:first-child) {
+      &:before {
+        content: '';
+        display: block;
+        border-top: 1px solid #ddd;
+        margin: 0 16px;
+      }
+    }
+  }
+`;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  height: 48px;
+`;
+
+export const Title = styled.h2`
+  font-size: 14px;
+  margin: 0;
+  padding: 0 16px;
+  font-weight: normal;
+`;
+
+export const TabList = styled.ul`
+  margin: 0;
+  padding: 0;
 `;

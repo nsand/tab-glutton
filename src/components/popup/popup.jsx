@@ -1,7 +1,16 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+
 import TabItem from '../tab-item/tab-item.jsx';
-import styles from './popup.scss';
-import { Navigation, Filter } from './style.js';
+import {
+  Navigation,
+  Filter,
+  Main,
+  Section,
+  Header,
+  Title,
+  TabList
+} from './style.js';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -9,8 +18,17 @@ export default class Popup extends React.Component {
     this.state = {
       windows: [],
       filter: '',
-      mru: {}
+      mru: {},
+      theme: 'light'
     };
+    this.themes = {
+      light: {
+        navigation: '#009688'
+      },
+      dark: {
+        navigation: '#000000'
+      }
+    }
   }
   componentDidMount() {
     chrome.runtime.sendMessage({action: 'mru'}, (mru) => {
@@ -44,16 +62,20 @@ export default class Popup extends React.Component {
     });
   }
   render() {
-    const {filter, windows, mru} = this.state;
-    const cls = this.state.isSeparated ? '' : styles.window;
+    const {filter, windows, mru } = this.state;
+    const theme = this.themes[this.state.theme] || this.themes.light;
     return (
-      <div>
+      <ThemeProvider theme={theme}>
         <Navigation>
-          <div>
-            <Filter ref="filter" type="text" placeholder="Search" onChange={this.filter.bind(this)}/>
-          </div>
+          <Filter
+            ref="filter"
+            type="text"
+            placeholder="Search"
+            onChange={this.filter.bind(this)}
+          />
+          <button onClick={() => this.setState({theme: this.state.theme === 'light' ? 'dark' : 'light' })}>Change Theme</button>
         </Navigation>
-        <main className={styles.main}>
+        <Main>
           {
             windows.sort((left, right) => {
               // Compare the timestamps, if they exist, from the mru state
@@ -64,22 +86,25 @@ export default class Popup extends React.Component {
               }
               return comp;
             }).map($window =>
-              <section className={cls} key={$window.id}>
-                <header className={styles.heading}>
-                  <h2 className={styles.headingText}>{$window.tabs.length} tabs</h2>
-                </header>
-                <ul className={styles.tabList}>
+              <Section
+                className={this.state.isSeparated ? '' : 'window'}
+                key={$window.id}
+              >
+                <Header>
+                  <Title>{$window.tabs.length} tabs</Title>
+                </Header>
+                <TabList>
                   {
                     $window.tabs
                       .filter(tab => filter.length === 0 || tab.title.toLocaleLowerCase().indexOf(filter) >= 0 || tab.url.toLocaleLowerCase().indexOf(filter) >= 0)
-                      .map(tab => <TabItem key={tab.id} tab={tab} onClose={this.closeTab.bind(this)}></TabItem>)
+                      .map(tab => <TabItem key={tab.id} tab={tab} onClose={this.closeTab.bind(this)}/>)
                   }
-                </ul>
-              </section>
+                </TabList>
+              </Section>
             )
           }
-        </main>
-      </div>
+        </Main>
+      </ThemeProvider>
     );
   }
 }
