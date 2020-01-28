@@ -1,3 +1,5 @@
+// TODO: dense
+
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
@@ -11,6 +13,7 @@ import {
   Title,
   TabList
 } from './style.js';
+import themes from '../../themes';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -18,30 +21,8 @@ export default class Popup extends React.Component {
     this.state = {
       windows: [],
       filter: '',
-      mru: {},
-      theme: 'dark'
+      mru: {}
     };
-    // todo: move to preferences, user can select or create and input
-    this.themes = {
-      light: {
-        navigation: '#009688',
-        placeholder: 'rgba(255, 255, 255, 0.8)',
-        main: '#ffffff',
-        tab: {
-          title: '#212121',
-          link: '#9e9e9e'
-        }
-      },
-      dark: {
-        navigation: '#1e1e1e',
-        placeholder: 'rgba(255, 255, 255, 0.4)',
-        main: '#1c1c1c',
-        tab: {
-          title: '#e1e1e1',
-          link: '#a5a5a5'
-        }
-      }
-    }
   }
   componentDidMount() {
     chrome.runtime.sendMessage({action: 'mru'}, (mru) => {
@@ -76,7 +57,7 @@ export default class Popup extends React.Component {
   }
   render() {
     const {filter, windows, mru } = this.state;
-    const theme = this.themes[this.state.theme] || this.themes.light;
+    const theme = themes[window.localStorage.getItem('theme')] || themes.light;
     return (
       <ThemeProvider theme={theme}>
         <Navigation>
@@ -86,7 +67,6 @@ export default class Popup extends React.Component {
             placeholder="Search"
             onChange={this.filter.bind(this)}
           />
-          <button onClick={() => this.setState({theme: this.state.theme === 'light' ? 'dark' : 'light' })}>Change Theme</button>
         </Navigation>
         <Main>
           {

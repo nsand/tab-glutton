@@ -5,7 +5,8 @@ const plugins = [];
 
 module.exports = {
   entry: {
-    index: './src/index.jsx'
+    index: './src/index.jsx',
+    options: './src/options/index.jsx'
   },
   output: {
     path: path.join(__dirname, 'bundles'),
