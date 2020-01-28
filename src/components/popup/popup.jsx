@@ -19,14 +19,27 @@ export default class Popup extends React.Component {
       windows: [],
       filter: '',
       mru: {},
-      theme: 'light'
+      theme: 'dark'
     };
+    // todo: move to preferences, user can select or create and input
     this.themes = {
       light: {
-        navigation: '#009688'
+        navigation: '#009688',
+        placeholder: 'rgba(255, 255, 255, 0.8)',
+        main: '#ffffff',
+        tab: {
+          title: '#212121',
+          link: '#9e9e9e'
+        }
       },
       dark: {
-        navigation: '#000000'
+        navigation: '#1e1e1e',
+        placeholder: 'rgba(255, 255, 255, 0.4)',
+        main: '#1c1c1c',
+        tab: {
+          title: '#e1e1e1',
+          link: '#a5a5a5'
+        }
       }
     }
   }

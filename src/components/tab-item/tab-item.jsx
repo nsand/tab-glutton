@@ -1,6 +1,8 @@
 import React from 'react';
+
 import styles from './tab-item.scss';
 import activeStyles from './tab-item-active.scss';
+import { TabTitle } from './style';
 
 export default class TabItem extends React.Component {
   constructor(props) {
@@ -68,7 +70,7 @@ export default class TabItem extends React.Component {
           }
         </div>
         <div className={styles.tabDetails}>
-          <div className={styles.tabTitle}>{tab.title}</div>
+          <TabTitle className={styles.tabTitle}>{tab.title}</TabTitle>
           {additionalDetails}
         </div>
         <span className={styles.actions}>

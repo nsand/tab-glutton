@@ -27,12 +27,13 @@ export const Filter = styled.input`
     outline: none;
   }
   &::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.8);
+    color: ${({ theme: { placeholder }}) => placeholder};
   }
 `;
 
 export const Main = styled.main`
   margin-top: 56px;
+  background-color: ${({ theme: { main }}) => main}
 `;
 
 export const Section = styled.section`
