@@ -7,14 +7,28 @@ export default class Options extends React.Component {
     super(props);
     this.state = {
       showUrl: window.localStorage.showURL,
-      isSeparated: window.localStorage.getItem('isSeparated'),
+      isSeparated: window.localStorage.getItem('isSeparated') || 'false',
       isCollapsed: window.localStorage.getItem('isCollapsed') || 'true',
       theme: window.localStorage.getItem('theme') || 'light'
     };
+    this.changeTheme = this.changeTheme.bind(this);
+    this.changeShowUrl = this.changeShowUrl.bind(this);
+    this.changeSeparated = this.changeSeparated.bind(this);
   }
   changeTheme(event) {
-    this.setState({theme: event.target.value});
-    window.localStorage.setItem('theme', event.target.value);
+    const theme = event.target.value;
+    this.setState({ theme });
+    window.localStorage.setItem('theme', theme);
+  }
+  changeShowUrl(event) {
+    const showUrl = event.target.checked ? 'true' : 'false';
+    this.setState({ showUrl });
+    window.localStorage.showURL = showUrl;
+  }
+  changeSeparated(event) {
+    const isSeparated = event.targed.checked ? 'true' : 'false';
+    this.setState({ isSeparated });
+    window.localStorage.setItem('isSeparated', isSeparated);
   }
   componentDidMount() {}
   render() {
@@ -32,7 +46,12 @@ export default class Options extends React.Component {
             <ul className="options">
               <li>
                 <div>
-                  <input type="checkbox" id="showURL" />
+                  <input
+                    type="checkbox"
+                    id="showURL"
+                    checked={this.state.showUrl}
+                    onChange={this.changeShowUrl}
+                  />
                   <label className="label" for="showURL">
                     Show tab URL
                   </label>
@@ -45,7 +64,8 @@ export default class Options extends React.Component {
                 <div>
                   <input type="checkbox" id="collapse" />
                   <label className="label" for="collapse">
-                    Dense tab list
+                    Dense tab list (does it work after styled-components
+                    migration?)
                   </label>
                 </div>
                 <div className="optionTip">
@@ -54,7 +74,12 @@ export default class Options extends React.Component {
                 <ul className="options">
                   <li>
                     <div>
-                      <input type="checkbox" id="separate" />
+                      <input
+                        type="checkbox"
+                        id="separate"
+                        checked={this.state.isSeparated}
+                        onChange={this.changeSeparated}
+                      />
                       <label className="label" for="separate">
                         Show separators
                       </label>
@@ -66,7 +91,11 @@ export default class Options extends React.Component {
                 </ul>
               </li>
               <li>
-                <select value={this.state.theme} name="select" onChange={this.changeTheme}>
+                <select
+                  value={this.state.theme}
+                  name="select"
+                  onChange={this.changeTheme}
+                >
                   {Object.keys(themes).map(theme => (
                     <option value={theme} selected={this.state.theme === theme}>
                       {theme}
