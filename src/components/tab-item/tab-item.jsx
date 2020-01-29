@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './tab-item.scss';
 import activeStyles from './tab-item-active.scss';
-import { TabTitle } from './style';
+import { TabTitle, Item } from './style';
 
 export default class TabItem extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ export default class TabItem extends React.Component {
     }
     const pinClasses = `${styles.pin} ${isPinned ? styles['pin--active'] : ''}`;
     return (
-      <li className={`${tab.selected ? activeStyles[cls] : styles[cls]} ${isPinned ? styles['tabItem--pinned'] : ''}`} onClick={this.focus.bind(this)}>
+      <Item className={`${tab.selected ? activeStyles[cls] : styles[cls]} ${isPinned ? styles['tabItem--pinned'] : ''}`} onClick={this.focus.bind(this)}>
         <div className={styles.favicon}>
           <img src={tab.favIconUrl}></img>
           { tab.audible && 
@@ -85,7 +85,7 @@ export default class TabItem extends React.Component {
             </svg>
           </button>
         </span>
-      </li>
+      </Item>
     );
   }
 }

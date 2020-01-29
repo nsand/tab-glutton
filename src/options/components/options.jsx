@@ -6,14 +6,15 @@ export default class Options extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showUrl: window.localStorage.showURL,
-      isSeparated: window.localStorage.getItem('isSeparated') || 'false',
-      isCollapsed: window.localStorage.getItem('isCollapsed') || 'true',
+      showUrl: window.localStorage.getItem('showURL') || false,
+      isSeparated: window.localStorage.getItem('isSeparated') || false,
+      isCollapsed: window.localStorage.getItem('isCollapsed') || true,
       theme: window.localStorage.getItem('theme') || 'light'
     };
     this.changeTheme = this.changeTheme.bind(this);
     this.changeShowUrl = this.changeShowUrl.bind(this);
     this.changeSeparated = this.changeSeparated.bind(this);
+    this.changeDence = this.changeDence.bind(this);
   }
   changeTheme(event) {
     const theme = event.target.value;
@@ -21,12 +22,18 @@ export default class Options extends React.Component {
     window.localStorage.setItem('theme', theme);
   }
   changeShowUrl(event) {
-    const showUrl = event.target.checked ? 'true' : 'false';
+    const showUrl = event.target.checked;
     this.setState({ showUrl });
     window.localStorage.showURL = showUrl;
   }
+  changeDence(event){
+    const isCollapsed = event.target.checked;
+    this.setState({ isCollapsed, isSeparated: !isCollapsed ? false : this.state.isSeparated });
+    window.localStorage.removeItem('isSeparated');
+		window.localStorage.isCollapsed = isCollapsed;
+  }
   changeSeparated(event) {
-    const isSeparated = event.targed.checked ? 'true' : 'false';
+    const isSeparated = event.target.checked;
     this.setState({ isSeparated });
     window.localStorage.setItem('isSeparated', isSeparated);
   }
@@ -62,7 +69,12 @@ export default class Options extends React.Component {
               </li>
               <li>
                 <div>
-                  <input type="checkbox" id="collapse" />
+                  <input
+                    type="checkbox"
+                    id="collapse"
+                    checked={this.state.isCollapsed}
+                    onChange={this.changeDence}
+                  />
                   <label className="label" for="collapse">
                     Dense tab list (does it work after styled-components
                     migration?)
@@ -79,6 +91,7 @@ export default class Options extends React.Component {
                         id="separate"
                         checked={this.state.isSeparated}
                         onChange={this.changeSeparated}
+                        disabled={this.state.isCollapsed}
                       />
                       <label className="label" for="separate">
                         Show separators

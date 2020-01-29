@@ -1,16 +1,4 @@
 .tabItem {
-  list-style: none;
-  cursor: default;
-  padding: 0 16px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  border-left: 3px solid transparent;
-  position: relative;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-  }
 
   img {
     width: 24px;
@@ -130,17 +118,4 @@
   opacity: 0;
   display: flex;
   align-items: center;
-}
-
-.favicon {
-  position: relative;
-}
-
-.audible {
-  fill: #9E9E9E;
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  bottom: -7px;
-  right: -10px;
 }

@@ -7,8 +7,9 @@ export const Navigation = styled.nav`
   z-index: 10;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 12px;
   top: 0;
   background-color: ${({ theme: { navigation } }) => navigation};
   height: 56px;
@@ -23,7 +24,7 @@ export const Filter = styled.input`
   color: #fff;
   font-size: 1.2em;
   height: 36px;
-  min-width: 200px;
+  min-width: 300px;
   padding: 5px 10px;
   &:focus {
     outline: none;
