@@ -8,6 +8,45 @@ export const TabTitle = styled.nav`
   text-overflow: ellipsis;
 `;
 
+export const Actions = styled.span`
+  max-width: 0;
+  transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+`;
+
+export const Pin = styled.svg`
+  width: 32px;
+  height: 32px;
+  fill: #9E9E9E;
+  opacity: 0;
+
+  &:hover {
+    fill: #212121;
+  }
+
+  &.pin--active {
+    fill: #009688;
+    opacity: 1;
+
+    &:hover {
+      fill: #009688;
+    }
+  }
+`;
+
+export const PlainButton = styled.button`
+  -webkit-appearance: none;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+`;
+
 export const Item = styled.li`
   list-style: none;
   cursor: default;
@@ -19,13 +58,7 @@ export const Item = styled.li`
   position: relative;
   background-color: ${({ theme: { tab: { background } } }) => background};
 
-  img {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-  }
-
-  &:hover .pin {
+  &:hover ${Pin} {
     opacity: 1;
   }
 
@@ -33,8 +66,25 @@ export const Item = styled.li`
     background-color: ${({ theme: { tab: { hover } } }) => hover};
   }
 
+  &:hover ${Actions},
+  &.tabItem--pinned ${Actions} {
+    max-width: 200px;
+    opacity: 1;
+    padding-left: 16px;
+    transition: max-width 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  &.tabItem--pinned:not(:hover) ${Actions} ${PlainButton}:last-child {
+    display: none;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+  }
+
   &.tabItem--separated {
-    composes: tabItem;
     &:after {
       content: '';
       display: block;
