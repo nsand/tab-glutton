@@ -1,6 +1,6 @@
 import React from 'react';
 
-import themes from '../../themes';
+import themes, { DEFAULT_THEME } from '../../themes';
 
 export default class Options extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class Options extends React.Component {
       showUrl: window.localStorage.getItem('showURL') || false,
       isSeparated: window.localStorage.getItem('isSeparated') || false,
       isCollapsed: window.localStorage.getItem('isCollapsed') || true,
-      theme: window.localStorage.getItem('theme') || 'light'
+      theme: window.localStorage.getItem('theme') || DEFAULT_THEME
     };
     this.changeTheme = this.changeTheme.bind(this);
     this.changeShowUrl = this.changeShowUrl.bind(this);

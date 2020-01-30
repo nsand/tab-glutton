@@ -1,3 +1,5 @@
+export const DEFAULT_THEME = 'light';
+
 export default {
   light: {
     navigation: '#009688',

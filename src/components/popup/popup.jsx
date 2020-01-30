@@ -14,7 +14,7 @@ import {
   Title,
   TabList
 } from './style.js';
-import themes from '../../themes';
+import themes, { DEFAULT_THEME } from '../../themes';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -58,7 +58,7 @@ export default class Popup extends React.Component {
   }
   render() {
     const {filter, windows, mru } = this.state;
-    const theme = themes[window.localStorage.getItem('theme')] || themes.light;
+    const theme = themes[window.localStorage.getItem('theme')] || themes[DEFAULT_THEME];
     return (
       <ThemeProvider theme={theme}>
         <BodylStyle />
