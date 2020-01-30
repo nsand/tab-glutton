@@ -12,7 +12,8 @@ export default {
       hover: 'rgba(0, 0, 0, 0.02)',
       separator: '#ddd',
       audioIcon: '#9e9e9e',
-      active: '#4DB6AC'
+      active: '#4DB6AC',
+      pinActive: '#009688'
     }
   },
   dark: {
@@ -26,7 +27,8 @@ export default {
       hover: 'rgba(255, 255, 255, 0.1)',
       separator: 'red',
       audioIcon: '#9e9e9e',
-      active: '#9aa0a6'
+      active: '#9aa0a6',
+      pinActive: '#ffffff'
     }
   }
 };

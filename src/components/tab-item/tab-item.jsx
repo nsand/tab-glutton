@@ -1,7 +1,17 @@
 import React from 'react';
 
-import styles from './tab-item.scss';
-import { TabTitle, Item, Audible, Actions, Pin, PlainButton } from './style';
+import { 
+  Item,
+  Title,
+  Details,
+  URL,
+  Favicon,
+  Audible,
+  Actions,
+  Pin,
+  Close,
+  PlainButton
+} from './style';
 
 export default class TabItem extends React.Component {
   constructor(props) {
@@ -51,7 +61,7 @@ export default class TabItem extends React.Component {
 
     let additionalDetails;
     if (this.state.showUrl === 'true') {
-      additionalDetails = <div className={styles.tabUrl}>{tab.url}</div>;
+      additionalDetails = <URL>{tab.url}</URL>;
     }
     if (!tab.favIconUrl || tab.favIconUrl.indexOf('chrome://') === 0) {
       tab.favIconUrl = '../img/empty.svg';
@@ -59,7 +69,7 @@ export default class TabItem extends React.Component {
     const pinClasses = `${isPinned ? 'pin--active' : ''}`;
     return (
       <Item className={`${tab.selected ? `${cls} tabItem--active`  : cls} ${isPinned ? 'tabItem--pinned' : ''}`} onClick={this.focus.bind(this)}>
-        <div className={styles.favicon}>
+        <Favicon>
           <img src={tab.favIconUrl}></img>
           { tab.audible && 
             <Audible viewBox="0 0 24 24">
@@ -67,11 +77,11 @@ export default class TabItem extends React.Component {
               <path d="M0 0h24v24H0z" fill="none"/>
             </Audible>
           }
-        </div>
-        <div className={styles.tabDetails}>
-          <TabTitle className={styles.tabTitle}>{tab.title}</TabTitle>
+        </Favicon>
+        <Details>
+          <Title>{tab.title}</Title>
           {additionalDetails}
-        </div>
+        </Details>
         <Actions>
           <PlainButton onClick={this.togglePin}>
             <Pin className={pinClasses} viewBox="0 0 24 24">
@@ -79,9 +89,9 @@ export default class TabItem extends React.Component {
             </Pin>
           </PlainButton>
           <PlainButton onClick={onClose.bind(null, tab)}>
-            <svg className={styles.closeButton} viewBox="0 0 24 24" height="24" width="24">
+            <Close viewBox="0 0 24 24" height="24" width="24">
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-            </svg>
+            </Close>
           </PlainButton>
         </Actions>
       </Item>

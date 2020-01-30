@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 
-export const TabTitle = styled.nav`
+export const Title = styled.div`
   color: ${({ theme: { tab: { title } } }) => title};
   font-size: 13px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+`;
+
+export const URL = styled(Title)`
+  color: ${({ theme : { tab: { link }}}) => link};
+`
+
+export const Details = styled.div`
+  flex: 1;
+  padding-left: 32px;
+  overflow: hidden;
 `;
 
 export const Actions = styled.span`
@@ -28,11 +38,11 @@ export const Pin = styled.svg`
   }
 
   &.pin--active {
-    fill: #009688;
+    fill: ${({ theme : { tab: { pinActive }}}) => pinActive};
     opacity: 1;
 
     &:hover {
-      fill: #009688;
+      fill: ${({ theme : { tab: { pinActive }}}) => pinActive};
     }
   }
 `;
@@ -115,3 +125,16 @@ export const Audible = styled.svg`
   bottom: -7px;
   right: -10px;
 `;
+
+
+export const Favicon = styled.div`
+  position: relative;
+`;
+
+export const Close = styled.svg`
+  fill: #9E9E9E;
+
+  &:hover {
+    fill: #212121;
+  }
+`

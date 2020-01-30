@@ -1,5 +1,3 @@
-// TODO: dense
-
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const BodylStyle = createGlobalStyle`
