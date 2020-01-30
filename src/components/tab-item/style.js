@@ -22,4 +22,13 @@ export const Item = styled.li`
   &:hover {
     background-color: ${({ theme: { tab: { hover } } }) => hover};
   }
-`
+`;
+
+export const Audible = styled.svg`
+  fill: ${({ theme : { tab: { audioIcon }}}) => audioIcon};
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: -7px;
+  right: -10px;
+`;

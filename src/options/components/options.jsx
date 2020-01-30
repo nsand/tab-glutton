@@ -91,7 +91,7 @@ export default class Options extends React.Component {
                         id="separate"
                         checked={this.state.isSeparated}
                         onChange={this.changeSeparated}
-                        disabled={this.state.isCollapsed}
+                        disabled={!this.state.isCollapsed}
                       />
                       <label className="label" for="separate">
                         Show separators

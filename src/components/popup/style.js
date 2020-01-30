@@ -1,6 +1,12 @@
 // TODO: dense
 
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const BodylStyle = createGlobalStyle`
+  body {
+    background: ${({ theme: { main } }) => main};
+  }
+`;
 
 export const Navigation = styled.nav`
   position: fixed;

@@ -7,7 +7,9 @@ export default {
       title: '#212121',
       link: '#9e9e9e',
       background: '#ffffff',
-      hover: 'rgba(0, 0, 0, 0.02)'
+      hover: 'rgba(0, 0, 0, 0.02)',
+      separator: '#ddd',
+      audioIcon: '#9e9e9e'
     }
   },
   dark: {
@@ -17,12 +19,10 @@ export default {
     tab: {
       title: '#e1e1e1',
       link: '#a5a5a5',
-      background: '#1d1d1d',
-      hover: 'rgba(255, 255, 255, 0.1)'
-    },
-    options: {
-      header: '',
-      main: ''
+      background: '#282a2d',
+      hover: 'rgba(255, 255, 255, 0.1)',
+      separator: 'red',
+      audioIcon: '#9e9e9e'
     }
   }
 };

@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 import TabItem from '../tab-item/tab-item.jsx';
 import {
+  BodylStyle,
   Navigation,
   Filter,
   Main,
@@ -60,6 +61,7 @@ export default class Popup extends React.Component {
     const theme = themes[window.localStorage.getItem('theme')] || themes.light;
     return (
       <ThemeProvider theme={theme}>
+        <BodylStyle />
         <Navigation>
           <Filter
             ref="filter"
