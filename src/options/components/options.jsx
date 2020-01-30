@@ -76,8 +76,7 @@ export default class Options extends React.Component {
                     onChange={this.changeDence}
                   />
                   <label className="label" for="collapse">
-                    Dense tab list (does it work after styled-components
-                    migration?)
+                    Dense tab list
                   </label>
                 </div>
                 <div className="optionTip">

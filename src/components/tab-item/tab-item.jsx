@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styles from './tab-item.scss';
-import activeStyles from './tab-item-active.scss';
 import { TabTitle, Item, Audible } from './style';
 
 export default class TabItem extends React.Component {
@@ -59,7 +58,7 @@ export default class TabItem extends React.Component {
     }
     const pinClasses = `${styles.pin} ${isPinned ? styles['pin--active'] : ''}`;
     return (
-      <Item className={`${tab.selected ? activeStyles[cls] : styles[cls]} ${isPinned ? styles['tabItem--pinned'] : ''}`} onClick={this.focus.bind(this)}>
+      <Item className={`${tab.selected ? `${cls} tabItem--active`  : cls} ${isPinned ? styles['tabItem--pinned'] : ''}`} onClick={this.focus.bind(this)}>
         <div className={styles.favicon}>
           <img src={tab.favIconUrl}></img>
           { tab.audible && 
