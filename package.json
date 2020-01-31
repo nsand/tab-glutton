@@ -1,6 +1,6 @@
 {
   "name": "tab-glutton",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A Google Chrome tab management extension",
   "main": "background.js",
   "scripts": {
@@ -23,6 +23,9 @@
     "management"
   ],
   "author": "Nick Sandonato <nick.sandonato@gmail.com>",
+  "contributors": [
+    "Yury Shapkarin <yury@shapkarin.me> (http://shapkarin.me/)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nsand/tab-glutton/issues"
