@@ -26,7 +26,7 @@ export default class Options extends React.Component {
     this.setState({ showUrl });
     window.localStorage.showURL = showUrl;
   }
-  changeDence(event){
+  changeDense(event){
     const isCollapsed = event.target.checked;
     this.setState({ isCollapsed });
     window.localStorage.removeItem('isSeparated');
@@ -73,7 +73,7 @@ export default class Options extends React.Component {
                     type="checkbox"
                     id="collapse"
                     checked={this.state.isCollapsed}
-                    onChange={this.changeDence}
+                    onChange={this.changeDense}
                   />
                   <label className="label" for="collapse">
                     Dense tab list
