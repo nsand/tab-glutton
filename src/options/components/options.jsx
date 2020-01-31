@@ -5,15 +5,13 @@ import themes, { DEFAULT_THEME } from '../../themes';
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    const localStorage = {
-      showURL: window.localStorage.getItem('showURL'),
-      isCollapsed: window.localStorage.getItem('isCollapsed'),
-      isSeparated: window.localStorage.getItem('isSeparated'),
-    }
+    const showURL = JSON.parse(window.localStorage.getItem('showURL'));
+    const isCollapsed = JSON.parse(window.localStorage.getItem('isCollapsed'));
+    const isSeparated = JSON.parse(window.localStorage.getItem('isSeparated'));
     this.state = {
-      showUrl: JSON.parse(localStorage.showURL),
-      isSeparated: JSON.parse(localStorage.isSeparated),
-      isCollapsed: localStorage.isCollapsed === null ? true : JSON.parse(localStorage.isCollapsed),
+      showURL,
+      isSeparated,
+      isCollapsed: isCollapsed === null ? true : isCollapsed,
       theme: window.localStorage.getItem('theme') || DEFAULT_THEME
     };
     this.changeTheme = this.changeTheme.bind(this);
