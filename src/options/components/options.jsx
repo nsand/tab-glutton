@@ -14,7 +14,7 @@ export default class Options extends React.Component {
     this.changeTheme = this.changeTheme.bind(this);
     this.changeShowUrl = this.changeShowUrl.bind(this);
     this.changeSeparated = this.changeSeparated.bind(this);
-    this.changeDence = this.changeDence.bind(this);
+    this.changeDense = this.changeDense.bind(this);
   }
   changeTheme(event) {
     const theme = event.target.value;
@@ -28,7 +28,7 @@ export default class Options extends React.Component {
   }
   changeDense(event){
     const isCollapsed = event.target.checked;
-    this.setState({ isCollapsed });
+    this.setState({ isCollapsed, isSeparated: !isCollapsed ? false : this.state.isSeparated });
     window.localStorage.removeItem('isSeparated');
 		window.localStorage.isCollapsed = isCollapsed;
   }
