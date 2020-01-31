@@ -28,7 +28,7 @@ export default class Options extends React.Component {
   }
   changeDence(event){
     const isCollapsed = event.target.checked;
-    this.setState({ isCollapsed, isSeparated: !isCollapsed ? false : this.state.isSeparated });
+    this.setState({ isCollapsed });
     window.localStorage.removeItem('isSeparated');
 		window.localStorage.isCollapsed = isCollapsed;
   }
@@ -103,17 +103,25 @@ export default class Options extends React.Component {
                 </ul>
               </li>
               <li>
-                <select
-                  value={this.state.theme}
-                  name="select"
-                  onChange={this.changeTheme}
-                >
-                  {Object.keys(themes).map(theme => (
-                    <option value={theme} selected={this.state.theme === theme}>
-                      {theme}
-                    </option>
-                  ))}
-                </select>
+                <div className="theme-wrapper">
+                  <label>
+                    Choose theme
+                  </label>
+                  <br />
+                  <select
+                    value={this.state.theme}
+                    name="theme"
+                    id="theme"
+                    onChange={this.changeTheme}
+                    className="theme-select"
+                  >
+                    {Object.keys(themes).map(theme => (
+                      <option value={theme} selected={this.state.theme === theme}>
+                        {theme}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </li>
             </ul>
           </section>

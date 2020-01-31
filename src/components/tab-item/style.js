@@ -34,7 +34,7 @@ export const Pin = styled.svg`
   opacity: 0;
 
   &:hover {
-    fill: #212121;
+    fill: ${({ theme : { tab: { actionsHover }}}) => actionsHover};
   }
 
   &.pin--active {
@@ -98,7 +98,7 @@ export const Item = styled.li`
     &:after {
       content: '';
       display: block;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid ${({ theme : { tab: { separator }}}) => separator};;
       position: absolute;
       bottom: 0;
       left: 72px;
@@ -135,6 +135,6 @@ export const Close = styled.svg`
   fill: #9E9E9E;
 
   &:hover {
-    fill: #212121;
+    fill: ${({ theme : { tab: { actionsHover }}}) => actionsHover};
   }
 `

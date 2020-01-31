@@ -13,7 +13,8 @@ export default {
       separator: '#ddd',
       audioIcon: '#9e9e9e',
       active: '#4DB6AC',
-      pinActive: '#009688'
+      pinActive: '#009688',
+      actionsHover: '#212121'
     }
   },
   dark: {
@@ -25,10 +26,11 @@ export default {
       link: '#9aa0a6',
       background: '#282a2d',
       hover: 'rgba(255, 255, 255, 0.1)',
-      separator: 'red',
+      separator: '#4a4c4f',
       audioIcon: '#9e9e9e',
       active: '#9aa0a6',
-      pinActive: '#ffffff'
+      pinActive: '#ffffff',
+      actionsHover: '#ffffff'
     }
   }
 };
