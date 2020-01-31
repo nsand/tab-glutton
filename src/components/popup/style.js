@@ -49,7 +49,7 @@ export const Section = styled.section`
       &:before {
         content: '';
         display: block;
-        border-top: 1px solid #ddd;
+        border-top: 1px solid ${({ theme: { section }}) => section};
         margin: 0 16px;
       }
     }

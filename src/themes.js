@@ -4,6 +4,7 @@ export default {
   light: {
     navigation: '#009688',
     placeholder: 'rgba(255, 255, 255, 0.8)',
+    section: '#ddd',
     main: '#ffffff',
     tab: {
       title: '#212121',
@@ -20,6 +21,7 @@ export default {
   dark: {
     navigation: '#1e1e1e',
     placeholder: 'rgba(255, 255, 255, 0.4)',
+    section: 'rgba(255, 255, 255, 0.12)',
     main: '#202124',
     tab: {
       title: '#e8eaed',
