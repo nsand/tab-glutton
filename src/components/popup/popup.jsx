@@ -29,7 +29,7 @@ export default class Popup extends React.Component {
       this.setState({mru});
     });
     chrome.windows.getAll({populate: true}, (windows) => {
-      this.setState({windows: windows});
+      this.setState({windows});
     });
     this.setState({isSeparated: JSON.parse(localStorage.getItem('isSeparated'))});
     this.refs.filter.focus();

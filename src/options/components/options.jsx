@@ -8,7 +8,6 @@ export default class Options extends React.Component {
     const showURL = window.localStorage.getItem('showURL');
     const isCollapsed = window.localStorage.getItem('isCollapsed');
     const isSeparated = window.localStorage.getItem('isSeparated');
-    
     this.state = {
       showUrl: JSON.parse(showURL),
       isSeparated: JSON.parse(isSeparated),
