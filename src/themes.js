@@ -1,7 +1,7 @@
-export const DEFAULT_THEME = 'light';
+export const DEFAULT_THEME = 'Light';
 
 export default {
-  light: {
+  Light: {
     navigation: '#009688',
     placeholder: 'rgba(255, 255, 255, 0.8)',
     section: '#ddd',
@@ -18,7 +18,7 @@ export default {
       actionsHover: '#212121'
     }
   },
-  dark: {
+  Dark: {
     navigation: '#1e1e1e',
     placeholder: 'rgba(255, 255, 255, 0.4)',
     section: 'rgba(255, 255, 255, 0.12)',
