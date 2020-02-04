@@ -13,24 +13,23 @@ Tab Glutton is here to help you sift through the open tabs in your browser.  It 
 You can install the extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tab-glutton/ekfmaibfpamaegficfifofnlhalkbdfm)
 
 
+## Installation
 
-# Building
-
-### install dependencies
+### Install dependencies
 ```
 npm i
 ```
 
-### run watch script
+### Run watch script
 ```
 npm start
 ```
 
-### load yours unpacked version
+### Load yours unpacked version
 - Open the Extension Management page by navigating to chrome://extensions
   - The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 - Enable Developer Mode by clicking the toggle switch next to Developer mode.
 - Click the LOAD UNPACKED button and select the extension directory.
 
-# License
+## License
 MIT
