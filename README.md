@@ -10,7 +10,7 @@ Chrome extension that helps you manage and navigate the growing number of tabs i
 
 Tab Glutton is here to help you sift through the open tabs in your browser.  It supports filtering open tabs by the tab's title or URL.  Once you find the tab you're looking for, you can click on the entry to go directly to that tab.
 
-You can install the extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tab-glutton/ekfmaibfpamaegficfifofnlhalkbdfm)
+You can install the extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/tab-glutton/ekfmaibfpamaegficfifofnlhalkbdfm)
 
 
 ## Installation
@@ -30,6 +30,8 @@ npm start
   - The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 - Enable Developer Mode by clicking the toggle switch next to Developer mode.
 - Click the LOAD UNPACKED button and select the extension directory.
+
+[Extensions Getting Started Tutorial](https://developer.chrome.com/extensions/getstarted)
 
 ## License
 MIT
