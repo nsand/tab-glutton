@@ -50,36 +50,18 @@
 			margin-left: 33px;
 			color: #9e9e9e;
 		}
+		.theme-wrapper {
+			margin-top: 10px;
+		}
+		.theme-select {
+			margin-top: 5px;
+			width: 88px;
+		}
 	</style>
 	<title>Tab Glutton Settings</title>
 </head>
 <body>
-	<nav class="navigation">
-		<img src="../img/tab_glutton_48.png" class="brand"><h1>Tab Glutton</h1>
-	</nav>
-	<main class="main">
-		<section>
-			<header class="heading">
-				<h2 class="headingText">Display</h2>
-			</header>
-			<ul class="options">
-				<li>
-					<div><input type="checkbox" id="showURL"><label class="label" for="showURL">Show tab URL</label></div>
-					<div class="optionTip">Shows the URL of the tab in addition to its title</div>
-				</li>
-				<li>
-					<div><input type="checkbox" id="collapse"><label class="label" for="collapse">Dense tab list</label></div>
-					<div class="optionTip">List tabs without a lot of space in between them</div>
-					<ul class="options">
-						<li>
-							<div><input type="checkbox" id="separate"><label class="label" for="separate">Show separators</label></div>
-							<div class="optionTip">Shows separators between each tab in the list</div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</section>
-	</main>
-	<script src="../lib/options.js"></script>
+	<div id="options"></div>
+	<script src="../bundles/options.js"></script>
 </body>
 </html>
